@@ -23,7 +23,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo $request['nombre'];
     }
 
     /**

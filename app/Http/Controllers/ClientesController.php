@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clientes;
+use App\Http\Requests\ClientesRequest;
 class ClientesController extends Controller
 {
     /**
@@ -38,7 +39,7 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientesRequest $request)
     {
         Clientes::create([
             'nombre' => $request['nombre'],

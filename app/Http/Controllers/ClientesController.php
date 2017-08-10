@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Clientes;
 class ClientesController extends Controller
 {
     /**
@@ -11,9 +11,15 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
+
     public function index()
     {
-        return view('clientes.index');
+        $clientes = Clientes::all();
+        return view('clientes.index')->with('clientes', $clientes);
     }
 
     /**
@@ -34,7 +40,18 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        echo $request['nombre'];
+        Clientes::create([
+            'nombre' => $request['nombre'],
+            'dui' => $request['dui'],
+            'nit' => $request['nit'],
+            'direccion' => $request['direccion'],
+            'ubicacion' => $request['ubicacion'],
+            'tiposolucion' => $request['solucion'],
+            'cod_sim' => $request['codigosim'],
+            'taza' => $request['taza'],
+            'fechafin' => $request['fechafin'],
+            ]);
+        return redirect('clientes');
     }
 
     /**
@@ -56,7 +73,8 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = Clientes::find($id);
+        return view('clientes.edit')->with('cliente', $cliente);
     }
 
     /**

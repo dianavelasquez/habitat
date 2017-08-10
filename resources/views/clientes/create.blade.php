@@ -2,14 +2,15 @@
 @section('content')
 	<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 offset-md-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Registrar Cliente</div>
                 <div class="panel-body">
                     {{ Form::open(['action' => 'ClientesController@store']) }}
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('nombre') ? ' has-danger' : '' }}">
+                            
                             <label for="nombre" class="col-md-4 control-label">Nombre de Cliente</label>
 
                             <div class="col-md-6">
@@ -23,7 +24,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('dui') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('dui') ? ' has-danger' : '' }}">
                             <label for="email" class="col-md-4 control-label">DUI</label>
 
                             <div class="col-md-6">
@@ -37,7 +38,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('nit') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('nit') ? ' has-danger' : '' }}">
                             <label for="nit" class="col-md-4 control-label">NIT</label>
 
                             <div class="col-md-6">
@@ -51,7 +52,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('direccion') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('direccion') ? ' has-danger' : '' }}">
                             <label for="direccion" class="col-md-4 control-label">Dirección</label>
 
                             <div class="col-md-6">
@@ -65,7 +66,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('ubicacion') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('ubicacion') ? ' has-danger' : '' }}">
                             <label for="ubicacion" class="col-md-4 control-label">Ubicación</label>
 
                             <div class="col-md-6">
@@ -79,7 +80,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('solucion') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('solucion') ? ' has-danger' : '' }}">
                             <label for="solucion" class="col-md-4 control-label">Tipo Solucion</label>
 
                             <div class="col-md-6">
@@ -93,7 +94,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('codigosim') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('codigosim') ? ' has-danger' : '' }}">
                             <label for="codigosim" class="col-md-4 control-label">Codigo Sim</label>
 
                             <div class="col-md-6">
@@ -107,7 +108,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('taza') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('taza') ? ' has-danger' : '' }}">
                             <label for="taza" class="col-md-4 control-label">Taza</label>
 
                             <div class="col-md-6">
@@ -121,7 +122,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('fechafin') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('fechafin') ? 'danger' : '' }}">
                             <label for="fechafin" class="col-md-4 control-label">Fecha Fin</label>
 
                             <div class="col-md-6">

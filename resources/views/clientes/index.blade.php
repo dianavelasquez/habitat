@@ -2,10 +2,11 @@
 @section('content')
 	<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Listado de Cliente</div>
-                <div class="panel-body">                
+                <div class="panel-body"> 
+                <a href="{{ url('/clientes/create') }}" class="btn btn-primary">Registra Nuevo</a>              
 					<table class="table">
 						<thead>
 							<th>Nombre</th>

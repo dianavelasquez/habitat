@@ -106,7 +106,6 @@ class ClientesController extends Controller
         $cliente = Clientes::find($id);
         $cliente->delete();
 
-        $clientes = Clientes::all();
-        return view('clientes.index')->with('clientes', $clientes);
+        return redirect('clientes');
     }
 }

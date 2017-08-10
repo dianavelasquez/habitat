@@ -23,7 +23,7 @@
 									<td>{{ $cliente->direccion }}</td>
 									<td>
 										<a href="{{ url('/clientes/'.$cliente->id.'/edit') }}" class="btn btn-warning">Editar</a> |
-                						<a class="btn btn-primary" href ="{{ url('clientes/delete', $cliente->id) }}" role="button" >Eliminar </a>
+                						<a class="btn btn-primary" href ="{{ url('/clientes/'.$cliente->id) }}" role="button" >Eliminar </a>
 									</td>
 								@endforeach
 							</tr>

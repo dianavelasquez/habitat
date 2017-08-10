@@ -86,7 +86,13 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = Clientes::find($id);
+
+        $cliente->nombre = $request['nombre'];
+
+        $cliente->save();
+
+        return redirect('clientes');
     }
 
     /**
@@ -97,6 +103,10 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = Clientes::find($id);
+        $cliente->delete();
+
+        $clientes = Clientes::all();
+        return view('clientes.index')->with('clientes', $clientes);
     }
 }

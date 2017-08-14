@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Albaniles;
+use App\Albanil;
+use App\Clientes;
 class AlbanilesController extends Controller
 {
     /**
@@ -18,7 +19,7 @@ class AlbanilesController extends Controller
 
     public function index()
     {
-        $albaniles = Albaniles::all();
+        $albaniles = Albanil::all();
         return view('albaniles.index')->with('albaniles', $albaniles);
     }
 
@@ -29,7 +30,8 @@ class AlbanilesController extends Controller
      */
     public function create()
     {
-        return view('albaniles.create');
+        $clientes = Clientes::all();
+        return view('albaniles.create')->with('clientes',$clientes);
     }
 
     /**

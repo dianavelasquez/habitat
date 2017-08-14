@@ -42,18 +42,15 @@ class AlbanilesController extends Controller
      */
     public function store(Request $request)
     {
-        Albaniles::create([
+        Albanil::create([
             'nombre' => $request['nombre'],
             'dui' => $request['dui'],
             'nit' => $request['nit'],
             'direccion' => $request['direccion'],
-            'ubicacion' => $request['ubicacion'],
-            'tiposolucion' => $request['solucion'],
-            'cod_sim' => $request['codigosim'],
-            'taza' => $request['taza'],
-            'fechafin' => $request['fechafin'],
+            'cuenta' => $request['cuenta'],
+            'id_cliente' => $request['id_cliente'],
             ]);
-        return redirect('clientes');
+        return redirect('albaniles');
     }
 
     /**

@@ -38,7 +38,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/home') }}">Inicio</a></li>
                         <li><a href="{{ url('/clientes') }}">Clientes</a></li>
-                        <li><a href="{{ url('/clientes') }}">Albañiles</a></li>
+                        <li><a href="{{ url('/albaniles') }}">Albañiles</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

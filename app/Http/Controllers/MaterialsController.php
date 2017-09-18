@@ -3,25 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Albanil;
-use App\Clientes;
-use App\Http\Requests\AlbalisRequest;
-class AlbanilesController extends Controller
+use App\Material;
+use App\Http\Requests\MaterialesRequest;
+
+class MaterialsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    } 
-
     public function index()
     {
-        $albaniles = Albanil::all();
-        return view('albaniles.index')->with('albaniles', $albaniles);
+        $materiales = Material::paginate(10);
+        return view('materiales.index',compact('materiales'));
     }
 
     /**
@@ -31,8 +26,7 @@ class AlbanilesController extends Controller
      */
     public function create()
     {
-        $clientes = Clientes::all();
-        return view('albaniles.create')->with('clientes',$clientes);
+        return view('materiales.create');
     }
 
     /**
@@ -41,17 +35,10 @@ class AlbanilesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AlbalisRequest $request)
+    public function store(MaterialesRequest $request)
     {
-        Albanil::create([
-            'nombre' => $request['nombre'],
-            'dui' => $request['dui'],
-            'nit' => $request['nit'],
-            'direccion' => $request['direccion'],
-            'cuenta' => $request['cuenta'],
-            'id_cliente' => $request['id_cliente'],
-            ]);
-        return redirect('albaniles');
+        Material::create($request->All());
+        return redirect('materiales');
     }
 
     /**
@@ -73,8 +60,7 @@ class AlbanilesController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Clientes::find($id);
-        return view('clientes.edit')->with('cliente', $cliente);
+        //
     }
 
     /**

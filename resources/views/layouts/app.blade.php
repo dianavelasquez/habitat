@@ -28,7 +28,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         Habitat para la Humanidad
                     </a>
                 </div>
@@ -39,6 +39,7 @@
                         <li><a href="{{ url('/home') }}">Inicio</a></li>
                         <li><a href="{{ url('/clientes') }}">Clientes</a></li>
                         <li><a href="{{ url('/albaniles') }}">Albañiles</a></li>
+                        <li><a href="{{ url('/materiales') }}">Materiales</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,6 +78,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!--<script src="{{ asset('js/app.js') }}"></script>-->
+    @yield('script')
 </body>
 </html>

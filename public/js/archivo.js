@@ -40,56 +40,56 @@ var correlativo =0;
     };
 
     $("#btnsub").on("click", function (e) {
-        var arrayElement = new Array(), 
-            id           = null;
-            proveedor    = null;
-            totalp       = null;
-        $(tbProducto).find("tr").each(function (index, element) {
+        var arrayElement = new Array(),
+            token        = null;
+            cliente      = null;
+            mejora       = null;
+            trabajados   = null;
+            totalpre     = null;
+        $(tbMaterial).find("tr").each(function (index, element) {
             if(element){
                 arrayElement.push({ 
-                    producto : $(element).attr("data-producto"),
-                    cantidad : $(element).attr("data-cantidad"),
+                    descripcion : $(element).attr("data-nombre"),
+                    material : $(element).attr("data-tipo"),
+                    cantidad :$(element).attr("data-cantidad"),
                     precio   : $(element).attr("data-precio")
                 });
                 //total = totalp+(parseFloat(cantidad))*(parseFloat(precio));
             }
-            proveedor = $("#proveedor").val();
-            id        = $("#cod").val();
-            totalp    = $("#pie #totalEnd").text();
+            token = $("#_token").val();
+            cliente = $("#cliente").val();
+            mejora        = $("#mejora").val();
+            trabajados  = $("#dias")
+            totalpre    = $("#pie #totalEnd").text();
         });
 
-        var elemento = {
-            id        : id,
-            proveedor  : proveedor,
-            productos : arrayElement,
-            total1   : totalp 
-        };
+       /*var elemento = {
+            cliente : cliente,
+            mejora  : mejora,
+            trabajados : trabajados,
+            total   : totalpre,
+            elementos : arrayElement
+        };*/
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        $.post("../includes/compras/guardar_compra.php", elemento)
+        $.ajax({
+            type: "POST",
+            headers: {'X-CSRF-TOKEN' : token },
+            url: '/presupuestos',
+            dataType: 'json',
+            data: { id_cliente: cliente, mejora: mejora, trabajados: trabajados, total: totalpre }
+      });
+        /*$.post("", elemento)
         .done(function (response) {
             console.log(response);
             if(response){
-                  BootstrapDialog.show({
-                    title: 'Aviso',
-                    size: BootstrapDialog.SIZE_LARGE,
-                    message: 'Datos guardados!',
-                    buttons: [{
-                        
-                        label: 'Cerrar ',
-                        cssClass: 'btn btn-primary',
-                        action: function(dialogItself){
-                            window.location.reload();
-                            dialogItself.close();
-                        }
-                    }]
-                });
+                  alert("guardo");
         
                 //win2ow.location.reload();
             }
 
-        });
+        });*/
     });
 
     $(document).on("click", "#delete-btn", function (e) {

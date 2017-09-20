@@ -8,7 +8,7 @@
                 <div class="panel-heading">Registrar Cliente</div>
                 <div class="panel-body">
                     <form id="presupuestoform" name="presupuestoform">
-                        {{ csrf_field() }}
+                        <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
                             <div class="col-md-6">
@@ -29,11 +29,11 @@
                         <div class="form-group">
                             <div class="col-md-6">
                             <label for="" class="col-md-4 control-label">Mejora a Realizar</label>
-                                <input id="mejora" type="text" class="form-control" name="mejora" value="" >
+                                <input id="mejora" type="text" class="form-control" name="mejora" />
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="col-md-4 control-label">Dias Trabajados</label>
-                                <input id="dias" type="text" class="form-control" name="dias" value="" >
+                                <input id="dias" type="text" class="form-control" name="dias" />
                             </div>  
                         </div>
 
@@ -97,7 +97,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="button" id="btnsub" class="btn btn-primary">
                                     Guardar
                                 </button>
                             </div>

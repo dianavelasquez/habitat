@@ -38,7 +38,12 @@ class PresupuestosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->ajax())
+        {
+            return Response()->json([
+                'mensaje' => $request->All()
+            ]);
+        }
     }
 
     /**

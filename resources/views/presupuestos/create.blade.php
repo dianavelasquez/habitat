@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="col-md-4 control-label">Dias Trabajados</label>
-                                <input id="nombre" type="text" class="form-control" name="nombre" value="" >
+                                <input id="dias" type="text" class="form-control" name="dias" value="" >
                             </div>  
                         </div>
 
@@ -45,7 +45,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6">
-                            <label for="" class="col-md-4 control-label">Nombre del Material</label>
+                            <label for="" class="col-md-4 control-label">Tipo del Material</label>
                                 <select id="tipo" name="tipo" class="form-control">
                                     <option value="">Seleccione un material</option>
                                     @foreach($materiales as $material)
@@ -55,36 +55,35 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="col-md-4 control-label">Nombre del material</label>
-                                <input id="nombre" type="text" class="form-control" name="nombre" value="" >
+                                <input id="nombre" type="text" class="form-control" name="nombre"/>
                             </div>  
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6">
                                 <label for="" class="col-md-4 control-label">Precio Unitario</label>
-                                <input id="precio" type="text" class="form-control" name="precio" value="" >
+                                <input id="precio" type="text" class="form-control" name="precio" />
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="col-md-4 control-label">Cantidad</label>
-                                <input id="cantidad" type="text" class="form-control" name="cantidad" value="" >
+                                <input id="cantidad" type="text" class="form-control" name="cantidad" />
                             </div>  
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6">
-                                <button type="button" id="agregar" class="btn btn-success" onClick="agregar();">Agregar</button>
+                                <button type="button" id="agregar" class="btn btn-success">Agregar</button>
                             </div>
                              
                         </div>
 
-                        <table class="table table-striped" id="tbMaterial">
+                        <table class="table table-striped table-bordered" id="tbMaterial">
                             <thead>
-                                <th>N°</th>
                                 <th>Descripción</th>
                                 <th>Tipo</th>
                                 <th>Cantidad</th>
                                 <th>Precio unitario</th>
-                                <th>Total</th>
+                                <th>Sub total</th>
                                 <th>Acción</th>
                             </thead>
                             <tbody></tbody>
@@ -104,11 +103,6 @@
                             </div>
                         </div>
                     {{ Form::close() }}
-                    <script type="text/javascript">
-                        function agregar(){
-                            alert('Hello wordl');
-                        }
-                    </script>
                 </div>
             </div>
         </div>

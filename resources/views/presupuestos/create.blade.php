@@ -69,14 +69,14 @@
                                 <input id="cantidad" type="text" class="form-control" name="cantidad" />
                             </div>  
                         </div>
-
+                        <br>
                         <div class="form-group">
                             <div class="col-md-6">
                                 <button type="button" id="agregar" class="btn btn-success">Agregar</button>
                             </div>
                              
                         </div>
-
+                        <br>
                         <table class="table table-striped table-bordered" id="tbMaterial">
                             <thead>
                                 <th>Descripción</th>

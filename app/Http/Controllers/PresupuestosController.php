@@ -7,6 +7,7 @@ use App\Clientes;
 use App\Material;
 use App\Presupuesto;
 use App\Presupuestodetalle;
+use Carbon\Carbon;
 
 class PresupuestosController extends Controller
 {
@@ -17,7 +18,8 @@ class PresupuestosController extends Controller
      */
     public function index()
     {
-        //
+        $presupuestos = Presupuesto::all();
+        return view('presupuestos.index', compact('presupuestos'));
     }
 
     /**
@@ -85,7 +87,11 @@ class PresupuestosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $presupuesto = presupuesto::find($id);
+        $clientes = Clientes::all();
+        $detalles = Presupuestodetalle::where('id_presupuesto',$id)->get();
+        //dd($detalles);
+        return view('presupuestos.edit', compact('presupuesto','clientes','detalles'));
     }
 
     /**
@@ -97,7 +103,14 @@ class PresupuestosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $presupuesto = Presupuesto::find($id);
+        $presupuesto->fill($request->All());
+       //dd($request->all());
+        //bitacora('Modificó un Usuario');
+        $presupuesto->save();
+        
+
+        return redirect('presupuestos');
     }
 
     /**

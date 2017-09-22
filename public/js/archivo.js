@@ -29,7 +29,7 @@ var correlativo =0;
              total +=( parseFloat(canti) * parseFloat(precio) );
              $("#pie #totalEnd").text(onFixed(total));
              //total2=total;
-             //clearForm();
+             clearForm();
          }else{
              alert('Debe llenar todos los campos');
          }       
@@ -40,7 +40,7 @@ var correlativo =0;
     };
 
     $("#btnsub").on("click", function (e) {
-        var arrayElement = new Array(),
+        var elementos = new Array(),
             token        = null;
             cliente      = null;
             mejora       = null;
@@ -48,7 +48,7 @@ var correlativo =0;
             totalpre     = null;
         $(tbMaterial).find("tr").each(function (index, element) {
             if(element){
-                arrayElement.push({ 
+                elementos.push({ 
                     descripcion : $(element).attr("data-nombre"),
                     material : $(element).attr("data-tipo"),
                     cantidad :$(element).attr("data-cantidad"),
@@ -58,8 +58,8 @@ var correlativo =0;
             }
             token = $("#_token").val();
             cliente = $("#cliente").val();
-            mejora        = $("#mejora").val();
-            trabajados  = $("#dias")
+            mejora      = $("#mejora").val();
+            trabajados  = $("#dias").val();
             totalpre    = $("#pie #totalEnd").text();
         });
 
@@ -73,13 +73,27 @@ var correlativo =0;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(cliente || mejora || trabajados){
         $.ajax({
             type: "POST",
             headers: {'X-CSRF-TOKEN' : token },
             url: '/presupuestos',
             dataType: 'json',
-            data: { id_cliente: cliente, mejora: mejora, trabajados: trabajados, total: totalpre }
+            data: {materiales: elementos, id_cliente: cliente, mejora: mejora, trabajados: trabajados, total: totalpre },
+           success : function(){
+                //alert('Dato insertado');
+                window.location.reload();
+            },
+            error : function(msj){
+                console.log(msj.responseJSON);   
+                
+                
+            }
       });
+    }else{
+        alert('nada que guardar');
+    }
+
         /*$.post("", elemento)
         .done(function (response) {
             console.log(response);

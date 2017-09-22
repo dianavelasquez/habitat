@@ -79,7 +79,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/archivo.js') }}"></script>
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
     @yield('script')
 </body>

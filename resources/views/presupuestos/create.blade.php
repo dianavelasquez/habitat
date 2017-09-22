@@ -102,6 +102,14 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-15 col-md-offset-4">
+                                <button type="button" id="btnsub" class="btn btn-primary">
+                                    Imprimir
+                                </button>
+                            </div>
+                        </div>
                     {{ Form::close() }}
                 </div>
             </div>

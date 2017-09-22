@@ -8,7 +8,11 @@
                 <div class="panel-heading">Bienvenido</div>
 
                 <div class="panel-body">
-                    Pagina de Inicio del Sistema de Administracion de Clientes
+                    <div class="col-md-15 col-md-offset-4">
+                        <div class="panel-heading">
+                            Pagina de Inicio del Sistema de Administracion de Clientes
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

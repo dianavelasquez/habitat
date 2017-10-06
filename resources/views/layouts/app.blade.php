@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">
@@ -78,8 +82,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <!--<script src="{{ asset('js/app.js') }}"></script>-->
+    
+ {{--  <script src="{{ asset('js/app.js') }}"></script> --}}
     @yield('script')
+    
+  
 </body>
 </html>

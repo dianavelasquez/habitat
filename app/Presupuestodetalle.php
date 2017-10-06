@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presupuestodetalle extends Model
 {
-    //
+    protected $guarded = [];
 }

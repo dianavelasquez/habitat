@@ -1,149 +1,32 @@
 @extends('layouts.app')
+
+@section('migasdepan')
+<h1>
+    CLientes
+</h1>
+<ol class="breadcrumb">
+    <li><a href="{{ url('/clientes') }}"><i class="fa fa-dashboard"></i>Clientes</a></li>
+    <li class="active">Registro</li> </ol>
+@endsection
+
 @section('content')
-	<div class="container">
+<div class="container">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Registrar Cliente</div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Registro de clientes</div>
                 <div class="panel-body">
-                    {{ Form::open(['action' => 'ClientesController@store']) }}
-                        {{ csrf_field() }}
+                    {{ Form::open(['action'=> 'ClienteController@store', 'class' => 'form-horizontal']) }}
+                    @include('clientes.formulario')
 
-                        <div class="form-group{{ $errors->has('nombre') ? ' has-danger' : '' }}">
-                            
-                            <label for="nombre" class="col-md-4 control-label">Nombre de Cliente</label>
-
-                            <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" autofocus>
-
-                                @if ($errors->has('nombre'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nombre') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-success">
+                                <span class="glyphicon glyphicon-floppy-disk">Registrar</span>
+                            </button>
                         </div>
-
-                        <div class="form-group{{ $errors->has('dui') ? ' has-danger' : '' }}">
-                            <label for="email" class="col-md-4 control-label">DUI</label>
-
-                            <div class="col-md-6">
-                                <input id="dui" type="text" class="form-control" name="dui" value="{{ old('dui') }}">
-
-                                @if ($errors->has('dui'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('dui') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('nit') ? ' has-danger' : '' }}">
-                            <label for="nit" class="col-md-4 control-label">NIT</label>
-
-                            <div class="col-md-6">
-                                <input id="nit" type="text" class="form-control" name="nit">
-
-                                @if ($errors->has('nit'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nit') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('direccion') ? ' has-danger' : '' }}">
-                            <label for="direccion" class="col-md-4 control-label">Dirección</label>
-
-                            <div class="col-md-6">
-                                <input id="direccion" type="direccion" class="form-control" name="direccion">
-
-                                @if ($errors->has('direccion'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('direccion') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('ubicacion') ? ' has-danger' : '' }}">
-                            <label for="ubicacion" class="col-md-4 control-label">Ubicación</label>
-
-                            <div class="col-md-6">
-                                <input id="ubicacion" type="ubicacion" class="form-control" name="ubicacion">
-
-                                @if ($errors->has('ubicacion'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('ubicacion') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('solucion') ? ' has-danger' : '' }}">
-                            <label for="solucion" class="col-md-4 control-label">Tipo Solucion</label>
-
-                            <div class="col-md-6">
-                                <input id="solucion" type="solucion" class="form-control" name="solucion">
-
-                                @if ($errors->has('solucion'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('solucion') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('codigosim') ? ' has-danger' : '' }}">
-                            <label for="codigosim" class="col-md-4 control-label">Codigo Sim</label>
-
-                            <div class="col-md-6">
-                                <input id="codigosim" type="text" class="form-control" name="codigosim">
-
-                                @if ($errors->has('codigosim'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('codigosim') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('taza') ? ' has-danger' : '' }}">
-                            <label for="taza" class="col-md-4 control-label">Taza</label>
-
-                            <div class="col-md-6">
-                                <input id="taza" type="text" class="form-control" name="taza">
-
-                                @if ($errors->has('taza'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('taza') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('fechafin') ? 'danger' : '' }}">
-                            <label for="fechafin" class="col-md-4 control-label">Fecha Fin</label>
-
-                            <div class="col-md-6">
-                                <input id="fechafin" type="date" class="form-control" name="fechafin">
-
-                                @if ($errors->has('fechafin'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('fechafin') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Guardar
-                                </button>
-                            </div>
-                        </div>
-                    {{ Form::close() }}
+                        {{ Form::close() }}
+                    </div>
                 </div>
             </div>
         </div>

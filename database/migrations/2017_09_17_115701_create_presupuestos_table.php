@@ -8,17 +8,20 @@ class CreatePresupuestosTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *cliente_id
      * @return void
      */
     public function up()
     {
         Schema::create('presupuestos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_cliente')->unsigned();
-            $table->string('mejora');
-            $table->integer('trabajados');
-            $table->foreign('id_cliente')->references('id')->on('clientes');
+            $table->integer('cliente_id')->unsigned();
+            $table->integer('tipomejora_id')->unsigned();
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->integer('estado')->default(1);
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('tipomejora_id')->references('id')->on('tipomejoras');
             $table->timestamps();
         });
     }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Material;
-use App\Http\Requests\MaterialesRequest;
+use App\Presupuestodetalle;
 
-class MaterialsController extends Controller
+class PresupuestodetalleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class MaterialsController extends Controller
      */
     public function index()
     {
-        $materiales = Material::paginate(10);
-        return view('materiales.index',compact('materiales'));
+        //
     }
 
     /**
@@ -26,7 +25,7 @@ class MaterialsController extends Controller
      */
     public function create()
     {
-        return view('materiales.create');
+        return view('presupuestos.detalles.create',compact('id'));
     }
 
     /**
@@ -35,10 +34,14 @@ class MaterialsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MaterialesRequest $request)
+    public function store(PresupuestodetalleRequest $request)
     {
-        Material::create($request->All());
-        return redirect('materiales');
+        try{
+            Presupuestodetalle::create($request->All());
+            return redirect('presupuestos/'.$request->presupuesto_id);
+        }catch (\Exception $e){
+            return redirect('presupuestos')->with('error',$e->getMessage());
+        }
     }
 
     /**
@@ -60,7 +63,8 @@ class MaterialsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $presupuesto = Presupuestodetalle::findorFail($id);
+        return view('presupuestos.detalles.edit',compact('presupuesto'));
     }
 
     /**
@@ -70,9 +74,11 @@ class MaterialsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PresupuestodetalleRequest $request, Presupuestodetalle $presupuestodetalle)
     {
-        //
+        $presupuestodetalle->fill($request->All());
+        $presupuestodetalle->save();
+        return redirect('presupuestos')->with('mensaje', 'Información actualizada');
     }
 
     /**
@@ -81,8 +87,9 @@ class MaterialsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Presupuestodetalle $presupuestodetalle)
     {
-        //
+        $presupuestodetalle->delete();
+        return redirect('presupuestos')->with('mensaje', 'Se eliminó con éxito');
     }
 }

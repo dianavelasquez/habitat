@@ -12,15 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('clientes','ClientesController');
+Route::Resource('clientes','ClienteController');
 
-Route::resource('albaniles','AlbanilesController');
-Route::resource('materiales','MaterialsController');
-Route::resource('presupuestos','PresupuestosController');
+Route::Resource('albaniles','AlbanilController');
+Route::Resource('materiales','MaterialController');
+Route::Resource('presupuestos','PresupuestoController');
+Route::Resource('tipomejoras','TipomejoraController');

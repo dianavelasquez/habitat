@@ -3,9 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
+
 class Presupuesto extends Model
 {
     protected $guarded = [];
-    protected $dates = ['created_at'];
+
+    public function cliente()
+    {
+    	return $this->belongsTo('App\Cliente');
+    }
+
+    public function tipomejora()
+    {
+    	return $this->belongsTo('App\Tipomejora');
+    }
+
+    public function presupuestodetalle()
+    {
+    	return $this->hasMany('App\Preupuestodetalle');
+    }
 }

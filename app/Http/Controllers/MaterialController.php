@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Clientes;
-use App\Http\Requests\ClientesRequest;
-class ClientesController extends Controller
+use App\Material;
+
+class MaterialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    } 
 
     public function index()
     {
-        $clientes = Clientes::all();
-        return view('clientes.index')->with('clientes', $clientes);
+        $materiales = Material::paginate(10);
+        return view('materiales.index',compact('materiales'));
     }
 
     /**
@@ -30,7 +31,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view('clientes.create');
+        return view('materiales.create');
     }
 
     /**
@@ -39,20 +40,10 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientesRequest $request)
+    public function store(Request $request)
     {
-        Clientes::create([
-            'nombre' => $request['nombre'],
-            'dui' => $request['dui'],
-            'nit' => $request['nit'],
-            'direccion' => $request['direccion'],
-            'ubicacion' => $request['ubicacion'],
-            'tiposolucion' => $request['solucion'],
-            'cod_sim' => $request['codigosim'],
-            'taza' => $request['taza'],
-            'fechafin' => $request['fechafin'],
-            ]);
-        return redirect('clientes');
+        Material::create($request->All());
+        return redirect('materiales')->with('mensaje', 'Material registrado');
     }
 
     /**
@@ -63,7 +54,9 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        //
+        $material = Material::findorFail($id);
+
+        return view('materiales.show', compact('material'));
     }
 
     /**
@@ -72,10 +65,11 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
-        $cliente = Clientes::find($id);
-        return view('clientes.edit')->with('cliente', $cliente);
+        $material = Material::findorFail($id);
+        return view('materiales.edit',compact('material'));
     }
 
     /**
@@ -87,13 +81,10 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cliente = Clientes::find($id);
-
-        $cliente->nombre = $request['nombre'];
-
-        $cliente->save();
-
-        return redirect('clientes');
+        $material = Material::findorFail($id);
+        $material->fill($request->All());
+        $material->save();
+        return redirect('/materiales')->with('mensaje', 'Información actualizada');
     }
 
     /**
@@ -104,9 +95,6 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = Clientes::find($id);
-        $cliente->delete();
-
-        return redirect('clientes');
+        //
     }
 }

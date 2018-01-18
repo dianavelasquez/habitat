@@ -32,7 +32,7 @@ class AlbanilesController extends Controller
     public function create()
     {
         $clientes = Clientes::all();
-        return view('albaniles.create')->with('clientes',$clientes);
+        return view('albaniles.create',compact('albaniles'));
     }
 
     /**
@@ -43,15 +43,8 @@ class AlbanilesController extends Controller
      */
     public function store(AlbalisRequest $request)
     {
-        Albanil::create([
-            'nombre' => $request['nombre'],
-            'dui' => $request['dui'],
-            'nit' => $request['nit'],
-            'direccion' => $request['direccion'],
-            'cuenta' => $request['cuenta'],
-            'id_cliente' => $request['id_cliente'],
-            ]);
-        return redirect('albaniles');
+        Albanil::create($request->All());
+        return redirect('albaniles')->with('mensaje', 'Albañil registrado');
     }
 
     /**
@@ -62,7 +55,8 @@ class AlbanilesController extends Controller
      */
     public function show($id)
     {
-        //
+        $albanil = Albanil::findorFail($id);
+        return view('albaniles.show', compact('albanil'));
     }
 
     /**
@@ -73,8 +67,8 @@ class AlbanilesController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Clientes::find($id);
-        return view('clientes.edit')->with('cliente', $cliente);
+        $albanil = Albanil::findorFail($id);
+        return view('albaniles.edit'), compact('albanil');
     }
 
     /**
@@ -86,7 +80,10 @@ class AlbanilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $albanil = Albanil::findorfail($id);
+        $albanil->fill($request->All());
+        $albanil->save();
+        return redirect('/albaniles')->with('mensaje', 'Información actualizada')
     }
 
     /**

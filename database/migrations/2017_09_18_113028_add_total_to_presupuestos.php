@@ -14,7 +14,7 @@ class AddTotalToPresupuestos extends Migration
     public function up()
     {
         Schema::table('presupuestos', function (Blueprint $table) {
-            $table->double('total',8,2);
+            //$table->double('total',8,2);
         });
     }
 

@@ -11,7 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sweetalert2.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -27,39 +28,58 @@
                         <span class="icon-bar"></span>
                     </button>
 
+                    <img src="{{ asset('imagenes/logoinicio.png') }}" width="130" height="80">
+
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        Habitat para la Humanidad
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Left Side Of Na/vbar -->
+                    @if(Auth::guest())
+                    @else
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/home') }}">Inicio</a></li>
-                        <li><a href="{{ url('/clientes') }}">Clientes</a></li>
-                        <li><a href="{{ url('/albaniles') }}">Albañiles</a></li>
-                        <li><a href="{{ url('/materiales') }}">Materiales</a></li>
+                        <p></p>
+                        <li><a href="{{ url('/home') }}"> Inicio</a>
+                        </li>
+                        <li><a href="{{ url('/clientes') }}"> Clientes</a>
+                        </li>
+                        <li><a href="{{ url('/albaniles') }}"> Albañiles</a>
+                        </li>
+                        <li><a href="{{ url('/materiales') }}"> Materiales</a>
+                        </li>
+                        <li><a href="{{ url('/presupuestos') }}"> Presupuestos</a>
+                        </li>
+                        <li><a href="{{ url('/tipomejoras') }}"> Mejoras</a>
+                        </li>
                     </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ route('register') }}">Crear cuenta</a></li>
+
+
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            
                         @else
+                        <p></p>
+                    <img src="{{ asset('imagenes/usuario2.svg') }}" width="40" height="40">
+                            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Cerrar sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -74,11 +94,37 @@
             </div>
         </nav>
 
+        @if(Session::has('exito'))
+            <div class="alert alert-success alert-dismissable" rol="alert">
+                <span class="glyphicon glyphicon-ok" area-hidden="true"></span>
+                <a href="#" class="close" data-dismiss="alert" area-label="close"> &times; </a>
+                {{ Session::get('exito') }}
+            </div>
+        @endif
+
+        @if(Session::has('error'))
+            <div class="alert alert-danger alert-dismissable" rol="alert">
+                <span class="glyphicon glyphicon-ok" area-hidden="true"></span>
+                <a href="#" class="close" data-dismiss="alert" area-label="close"> &times; </a>
+                {{ Session::get('error') }}
+            </div>
+        @endif
+
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.inputmask.bundle.js')}}"></script>
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('[data-mask]').inputmask();
+        });
+    </script>
+
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
     @yield('script')
 </body>

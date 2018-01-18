@@ -17,11 +17,10 @@ class CreateAlbanilsTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('direccion');
+            $table->string('telefono');
             $table->string('dui');
             $table->string('nit');
             $table->string('cuenta');
-            $table->integer('id_cliente')->unsigned();
-            $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->timestamps();
         });
     }

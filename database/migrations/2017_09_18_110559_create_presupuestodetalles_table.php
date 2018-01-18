@@ -15,13 +15,12 @@ class CreatePresupuestodetallesTable extends Migration
     {
         Schema::create('presupuestodetalles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
-            $table->integer('id_material')->unsigned();
+            $table->integer('presupuesto_id')->unsigned();
+            $table->integer('material_id')->unsigned();
             $table->integer('cantidad');
-            $table->double('preciou',8,2);
-            $table->integer('id_presupuesto')->unsigned();
-            $table->foreign('id_presupuesto')->references('id')->on('presupuestos');
-            $table->foreign('id_material')->references('id')->on('materials');
+            $table->string('descripcion');
+            $table->foreign('presupuesto_id')->references('id')->on('presupuestos');
+            $table->foreign('material_id')->references('id')->on('materials');
             $table->timestamps();
         });
     }

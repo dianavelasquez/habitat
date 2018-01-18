@@ -11,8 +11,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+<<<<<<< HEAD
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sweetalert2.css') }}" rel="stylesheet">
+=======
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+>>>>>>> cfe1a401127ea1f3845ecf872e84d87f7e28f276
 </head>
 <body>
     <div id="app">
@@ -114,6 +122,7 @@
     </div>
 
     <!-- Scripts -->
+<<<<<<< HEAD
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery.inputmask.bundle.js')}}"></script>
@@ -126,6 +135,12 @@
     </script>
 
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
+=======
+    
+ {{--  <script src="{{ asset('js/app.js') }}"></script> --}}
+>>>>>>> cfe1a401127ea1f3845ecf872e84d87f7e28f276
     @yield('script')
+    
+  
 </body>
 </html>

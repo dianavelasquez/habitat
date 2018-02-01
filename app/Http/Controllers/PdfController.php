@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 
 class PdfController extends Controller
 {
@@ -18,13 +19,18 @@ class PdfController extends Controller
 
     public function invoice()
     {
+        $dompdf = new Dompdf();
         $data = $this->getData();
-        $date = date('Y-m-d');
-        $invoice = "2222";
-        $view = \View::make('pdf.invoice', compact('data','date','invoice'))->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
+        $fecha = date('d-m-Y');
+        $invoice = "Primero";
+        $view = \View::make('pdf.invoice', compact('data','fecha','invoice'))->render();
+        if (isset($view)) {
+  $view->page_text(770, 580, "Page {PAGE_NUM} of {PAGE_COUNT}", $font, 10, array(0, 0, 0));
+}
+        $dompdf = \App::make('dompdf.wrapper');
+        $dompdf->loadHTML($view);
+        $dompdf->setPaper('letter', 'landscape');
+        return $dompdf->stream('invoice');
     }
 
     public function getData()

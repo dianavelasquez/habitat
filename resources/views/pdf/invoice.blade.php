@@ -2,18 +2,19 @@
 <html lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Ejemplo 2</title>
-	{!! Html::style('assets/css/pdf.css') !!}
+	<title>Hola</title>
+	{!! Html::style('css/pdf.css') !!}
 </head>
 <body>
-
+	<header class="clearfix">
+      @include('pdf.header')
+    </header>
 	<main>
-		<div id="details" class="clearfix">
-			<div id="invoice">
-				<h1>INVOICE {{ $invoice }}</h1>
-				<div class="date">Date of Invoice: {{ $date }}</div>
-			</div>
-		</div>
+      <div id="invoicec">
+          <h1>Titulo</h1>
+          <div class="date">Fecha de consulta: {{$fecha}}</div>
+        </div>
+        <br>
 		<table border="0" cellspacing="0" cellpadding="0">
 			<thead>
 				<tr>
@@ -39,7 +40,17 @@
 				</tr>
 			</tfoot>
 		</table>
+	<div id="thanks">¡Gracias!</div>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
 	</main>
-
+	<footer>
+      @include('pdf.footer')
+      <div align="right">
+    
+      </div>
+    </footer>
 </body>
 </html>

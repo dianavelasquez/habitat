@@ -34,11 +34,6 @@
                             <label for="nombre" class="col-md-4 control-label">{{$material->unidad}}</label><br>
                         </div>
 
-                        <div class="form-group{{ $errors->has('precio_unitario') ? ' has-error' : '' }}">
-                            <label for="precio_unitario" class="col-md-4 control-label">Precio por unidad: </label>
-                            <label for="nombre" class="col-md-4 control-label">{{$material->precio_unitario}}</label><br>
-                        </div>
-
                       {{ Form::open(['route' => ['materiales.destroy', $material->id ], 'method' => 'DELETE', 'class' => 'form-horizontal'])}}
                       <a href="{{ url('/materiales/'.$material->id.'/edit') }}" class="btn btn-warning"><span class="glyphicon glyphicon-text-size"></span> Editar</a> |
                         <button class="btn btn-danger" type="button" onclick="

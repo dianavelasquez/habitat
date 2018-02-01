@@ -20,6 +20,7 @@ class CreateAlbanilsTable extends Migration
             $table->string('telefono');
             $table->string('dui');
             $table->string('nit');
+            $table->double('salario',5,2);
             $table->string('cuenta');
             $table->timestamps();
         });

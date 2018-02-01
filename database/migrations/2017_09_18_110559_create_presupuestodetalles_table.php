@@ -18,7 +18,7 @@ class CreatePresupuestodetallesTable extends Migration
             $table->integer('presupuesto_id')->unsigned();
             $table->integer('material_id')->unsigned();
             $table->integer('cantidad');
-            $table->string('descripcion');
+            $table->double('precio_unitario',7,2);
             $table->foreign('presupuesto_id')->references('id')->on('presupuestos');
             $table->foreign('material_id')->references('id')->on('materials');
             $table->timestamps();

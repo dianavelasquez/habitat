@@ -11,22 +11,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-<<<<<<< HEAD
+
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sweetalert2.css') }}" rel="stylesheet">
-=======
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script
-  src="http://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
->>>>>>> cfe1a401127ea1f3845ecf872e84d87f7e28f276
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
+                    <img src="{{ asset('imagenes/logoinicio.png') }}" width="140" height="90">
+
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -35,8 +32,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <img src="{{ asset('imagenes/logoinicio.png') }}" width="130" height="80">
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
@@ -61,20 +56,21 @@
                         </li>
                         <li><a href="{{ url('/tipomejoras') }}"> Mejoras</a>
                         </li>
+                        <li><a href=" "> Reportes</a>
+                        </li>
                     </ul>
                     @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ route('register') }}">Crear cuenta</a></li>
-
 
                         <!-- Authentication Links -->
                         @if (Auth::guest())
+                        <li><a href="{{ route('register') }}">Crear cuenta</a></li>
                             
                         @else
                         <p></p>
-                    <img src="{{ asset('imagenes/usuario2.svg') }}" width="40" height="40">
+                        <img src="{{ asset('imagenes/usuario2.svg') }}" width="40" height="40">
                             
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -122,7 +118,6 @@
     </div>
 
     <!-- Scripts -->
-<<<<<<< HEAD
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery.inputmask.bundle.js')}}"></script>
@@ -135,12 +130,16 @@
     </script>
 
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
-=======
     
  {{--  <script src="{{ asset('js/app.js') }}"></script> --}}
->>>>>>> cfe1a401127ea1f3845ecf872e84d87f7e28f276
+
     @yield('script')
-    
+    <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+    </div>
+    <strong>Copyright &copy; 2017 <a href="http://almsaeedstudio.com">Universidad de El Salvador. FMP</a>.</strong> All rights
+    reserved.
+  </footer>
   
 </body>
 </html>

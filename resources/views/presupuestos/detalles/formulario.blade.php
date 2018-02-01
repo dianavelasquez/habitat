@@ -27,14 +27,15 @@
     </div>
 </div>
 
-<div class="form-group{{ $errors->has('descripcion') ? ' has-error' : ''}}">
-  <label for="" class="col-md-4 control-label">Descripcion</label>
+<div class="form-group{{$errors->has('precio_unitario') ? 'has-error' : '' }}">
+    <label for="precio_unitario" class="col-md-4 control-label">Precio unitario</label>
+
     <div class="col-md-6">
-      {!!Form::text('descripcion',null,['class' => 'form-control', 'id' => 'descripcion' ])!!}
-      @if($errors->has('descripcion'))
+        {{ Form::text('precio', null, ['class' => 'form-control', 'id'=> 'precio']) }}
+        @if ($errors->has('precio_unitario'))
         <span class="help-block">
-          <strong>{{ $errors->first('descripcion') }}</strong>
+            <strong>{{ $errors->first('precio_unitario') }}</strong>
         </span>
-      @endif
+        @endif
     </div>
 </div>

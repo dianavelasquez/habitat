@@ -8,9 +8,12 @@
                 <div class="panel-heading">Bienvenido/a</div>
 
                 <div class="panel-body">
-                    <div class="col-md-15 col-md-offset-4">
+                    <div class="col-md-11">
                         <div class="panel-heading">
                             Página de inicio de SIRMAC
+                        </div>
+                        <div class="panel-body">
+                            <center><img src="{{ asset('imagenes/bienvenida.jpg') }}" width="580" height="350"></center>
                         </div>
                     </div>
                 </div>

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Material;
-use App\Albanil;
-use App\Presupuestodetalle;
 
-class PresupuestodetalleController extends Controller
+class PdfController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,6 +16,28 @@ class PresupuestodetalleController extends Controller
         //
     }
 
+    public function invoice()
+    {
+        $data = $this->getData();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view = \View::make('pdf.invoice', compact('data','date','invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice');
+    }
+
+    public function getData()
+    {
+        $data = [
+            'quantity' => '1',
+            'description' => 'some ramdom text',
+            'price' => '500',
+            'total' => '500'
+        ];
+        return $data;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +45,7 @@ class PresupuestodetalleController extends Controller
      */
     public function create()
     {
-        return view('presupuestos.detalles.create',compact('id'));
+        //
     }
 
     /**
@@ -35,14 +54,9 @@ class PresupuestodetalleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PresupuestodetalleRequest $request)
+    public function store(Request $request)
     {
-        try{
-            Presupuestodetalle::create($request->All());
-            return redirect('presupuestos/'.$request->presupuesto_id);
-        }catch (\Exception $e){
-            return redirect('presupuestos')->with('error',$e->getMessage());
-        }
+        //
     }
 
     /**
@@ -64,8 +78,7 @@ class PresupuestodetalleController extends Controller
      */
     public function edit($id)
     {
-        $presupuesto = Presupuestodetalle::findorFail($id);
-        return view('presupuestos.detalles.edit',compact('presupuesto'));
+        //
     }
 
     /**
@@ -75,11 +88,9 @@ class PresupuestodetalleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PresupuestodetalleRequest $request, Presupuestodetalle $presupuestodetalle)
+    public function update(Request $request, $id)
     {
-        $presupuestodetalle->fill($request->All());
-        $presupuestodetalle->save();
-        return redirect('presupuestos')->with('mensaje', 'Información actualizada');
+        //
     }
 
     /**
@@ -88,9 +99,8 @@ class PresupuestodetalleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Presupuestodetalle $presupuestodetalle)
+    public function destroy($id)
     {
-        $presupuestodetalle->delete();
-        return redirect('presupuestos')->with('mensaje', 'Se eliminó con éxito');
+        //
     }
 }

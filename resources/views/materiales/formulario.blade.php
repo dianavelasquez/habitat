@@ -36,16 +36,3 @@
 		@endif
 	</div>
 </div>
-
-<div class="form-group{{$errors->has('precio_unitario') ? 'has-error' : '' }}">
-	<label for="precio_unitario" class="col-md-4 control-label">Precio unitario</label>
-
-	<div class="col-md-6">
-		{{ Form::text('precio_unitario', null, ['class' => 'form-control']) }}
-		@if ($errors->has('precio_unitario'))
-		<span class="help-block">
-			<strong>{{ $errors->first('precio_unitario') }}</strong>
-		</span>
-		@endif
-	</div>
-</div>

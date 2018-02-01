@@ -32,13 +32,16 @@
                         <div class="form-group{{ $errors->has('fecha_inicio') ? ' has-error' : '' }}">
                             <label for="fecha_inicio" class="col-md-4 control-label">Fecha inicio: </label>
                             <label for="nombre" class="col-md-4 control-label">{{$presupuesto->fecha_inicio->format('d-m-Y')}}</label><br>
-
                         </div>
 
                         <div class="form-group{{ $errors->has('fecha_fin') ? ' has-error' : '' }}">
                             <label for="fecha_fin" class="col-md-4 control-label">Fecha finalización: </label>
                             <label for="nombre" class="col-md-4 control-label">{{$presupuesto->fecha_fin->format('d-m-Y')}}</label><br>
+                        </div>
 
+                        <div class="form-group{{ $errors->has('precio_unitario') ? ' has-error' : '' }}">
+                            <label for="precio_unitario" class="col-md-4 control-label">Precio por unidad: </label>
+                            <label for="nombre" class="col-md-4 control-label">{{$material->precio_unitario}}</label><br>
                         </div>
 
                       {{ Form::open(['route' => ['presupuestos.destroy', $presupuesto->id ], 'method' => 'DELETE', 'class' => 'form-horizontal'])}}

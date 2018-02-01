@@ -22,11 +22,12 @@
 
                     <br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                        Agregar presupuesto
+                        Agregar material
                     </button>
                     <br>
                     @include('presupuestos.tabla')
                     <input type="hidden" name="contador" id="contador" readonly>
+                    <input type="hidden" name="total" id="total" readonly>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-1">
                             <button type="submit" class="btn btn-success">

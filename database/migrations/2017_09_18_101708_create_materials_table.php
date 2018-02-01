@@ -18,7 +18,6 @@ class CreateMaterialsTable extends Migration
             $table->string('codigo');
             $table->string('nombre');
             $table->string('unidad');
-            $table->double('precio_unitario',7,2);
             $table->timestamps();
         });
     }

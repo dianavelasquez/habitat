@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Presupuesto extends Model
 {
     protected $guarded = [];
+    protected $dates = ['fecha_inicio','fecha_fin'];
 
     public function cliente()
     {
@@ -21,5 +22,9 @@ class Presupuesto extends Model
     public function presupuestodetalle()
     {
     	return $this->hasMany('App\Preupuestodetalle');
+    }
+    public function albanil()
+    {
+        return $this->belongsTo('App\albanil');
     }
 }

@@ -60,6 +60,19 @@
 	</div>
 </div>
 
+<div class="form-group{{$errors->has('salario') ? 'has-error' : '' }}">
+	<label for="salario" class="col-md-4 control-label">Salario</label>
+
+	<div class="col-md-6">
+		{{ Form::text('salario', null, ['class' => 'form-control']) }}
+		@if ($errors->has('salario'))
+		<span class="help-block">
+			<strong>{{ $errors->first('salario') }}</strong>
+		</span>
+		@endif
+	</div>
+</div>
+
 <div class="form-group{{$errors->has('cuenta') ? 'has-error' : '' }}">
 	<label for="cuenta" class="col-md-4 control-label">Número de cuenta</label>
 

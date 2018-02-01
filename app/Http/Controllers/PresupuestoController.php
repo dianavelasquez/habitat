@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cliente;
 use App\Tipomejora;
 use App\Material;
+use App\Albanil;
 use App\Presupuesto;
 use App\Presupuestodetalle;
 
@@ -38,7 +39,8 @@ class PresupuestoController extends Controller
         $tipomejoras = Tipomejora::all();
         $presupuestos = Presupuesto::all();
         $materiales = Material::all();
-        return view('presupuestos.create',compact('clientes','tipomejoras','presupuestos','materiales'));
+        $albaniles = Albanil::all();
+        return view('presupuestos.create',compact('clientes','tipomejoras','presupuestos','materiales','albaniles'));
 
         //return view('presupuestos.create');
     }
@@ -61,6 +63,8 @@ class PresupuestoController extends Controller
                 'tipomejora_id' => $request->tipomejora_id,
                 'fecha_inicio' => $request->fecha_inicio,
                 'fecha_fin' => $request->fecha_fin,
+                'albanil_id' => $request->albanil_id,
+                'total' => $request->total,
             ]);
 
             for($i = 0; $i<$count;$i++)
@@ -69,7 +73,7 @@ class PresupuestoController extends Controller
                     'presupuesto_id' => $presupuesto->id,
                     'material_id' => $request->materiales[$i],
                     'cantidad' => $request->cantidades[$i],
-                    'descripcion' => $request->descripciones[$i],
+                    'precio_unitario' => $request->precios[$i],
                 ]);
             }
             \DB::commit();
@@ -89,7 +93,7 @@ class PresupuestoController extends Controller
     public function show($id)
     {
         $presupuesto = Presupuesto::findorFail($id);
-        $detalles = Presupuestodetalle::where('presupuesto_id',$presupuesto->id)->get();
+        $detalles = Presupuestodetalle::where('presupuesto_id',$presupuesto->id)->orderBy('id','ASC')->get();
         return view('presupuestos.show', compact('presupuesto','detalles'));
     }
 
@@ -100,10 +104,12 @@ class PresupuestoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(Presupuesto $presu)
+    public function edit(Presupuesto $presupuesto)
     {
         //$presupuesto = Presupuesto::findorFail($id);
-        return view('presupuestos.edit',compact('presu'));
+        $clientes = Cliente::all();
+        $tipomejoras = Tipomejora::all();
+        return view('presupuestos.edit',compact('presupuesto','clientes','tipomejoras'));
     }
 
     /**
@@ -113,10 +119,10 @@ class PresupuestoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Presupuesto $presu)
+    public function update(Request $request, Presupuesto $presupuesto)
     {
-        $presu->fill($request->All());
-        $presu->save();
+        $presupuesto->fill($request->All());
+        $presupuesto->save();
         return redirect('/presupuestos')->with('mensaje', 'Información actualizada');
     }
 
@@ -129,5 +135,31 @@ class PresupuestoController extends Controller
     public function destroy(Presupuesto $presu)
     {
         //
+    }
+
+    public function baja($cadena)
+    {
+        $datos = explode("+", $cadena);
+        $id = $datos[0];
+        $motivo = $datos[1];
+
+        $presupuesto = Presupuesto::find($id);
+        $presupuesto->estado = 2;
+        $presupuesto->motivo = $motivo;
+        //$presupuesto->fecha
+        $presupuesto->save();
+
+        return redirect('/presupuestos')->with('mensaje','Presupuesto dado de baja');
+    }
+
+    public function alta($id)
+    {
+        $presupuesto = Presupuesto::find($id);
+        $presupuesto->estado = 1;
+        $presupuesto->motivo = "";
+        //$presupuesto->fecha
+        $presupuesto->save();
+
+        return redirect('/presupuestos')->with('mensaje','Presupuesto dado de alta');
     }
 }

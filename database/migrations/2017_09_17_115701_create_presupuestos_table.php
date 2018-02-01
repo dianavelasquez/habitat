@@ -19,6 +19,8 @@ class CreatePresupuestosTable extends Migration
             $table->integer('tipomejora_id')->unsigned();
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
+            $table->integer('albanil_id')->unsigned();
+            $table->double('total',8,2);
             $table->integer('estado')->default(1);
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->foreign('tipomejora_id')->references('id')->on('tipomejoras');

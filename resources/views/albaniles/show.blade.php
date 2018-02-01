@@ -44,8 +44,13 @@
                             <label for="nombre" class="col-md-4 control-label">{{$albanil->nit}}</label><br>
                         </div>
 
-                        <div class="form-group{{ $errors->has('ubicacion') ? ' has-error' : '' }}">
-                            <label for="ubicacion" class="col-md-4 control-label">Número de cuenta: </label>
+                        <div class="form-group{{ $errors->has('salario') ? ' has-error' : '' }}">
+                            <label for="salario" class="col-md-4 control-label">Salario: </label>
+                            <label for="nombre" class="col-md-4 control-label">{{$albanil->salario}}</label><br>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('cuenta') ? ' has-error' : '' }}">
+                            <label for="cuenta" class="col-md-4 control-label">Número de cuenta: </label>
                             <label for="nombre" class="col-md-4 control-label">{{$albanil->cuenta}}</label><br>
                         </div>
 

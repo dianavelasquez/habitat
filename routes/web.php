@@ -25,3 +25,4 @@ Route::Resource('albaniles','AlbanilController');
 Route::Resource('materiales','MaterialController');
 Route::Resource('presupuestos','PresupuestoController');
 Route::Resource('tipomejoras','TipomejoraController');
+Route::get('pdf', 'PdfController@invoice');

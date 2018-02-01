@@ -32,6 +32,23 @@
     </div>
 </div>
 
+<div class="form-group{{ $errors->has('albanil_id') ? ' has-error' : '' }}">
+    <label for="" class="col-md-4 control-label">Seleccione albañil</label>
+    <div class="col-md-6">
+        <select name="albanil_id" id="albanil" class="form-control">
+            <option value="">Seleccione albañil</option>
+            @foreach($albaniles as $albanil)
+            <option value="{{$albanil->id}}">{{$albanil->nombre}}</option>
+            @endforeach
+        </select>
+        @if ($errors->has('albanil_id'))
+        <span class="help-block">
+            <strong>{{ $errors->first('albanil_id') }}</strong>
+        </span>
+        @endif
+    </div>
+</div>
+
 <div class="form-group{{ $errors->has('fecha_inicio') ? ' has-error' : '' }}">
     <label for="fecha_inicio" class="col-md-4 control-label">Fecha inicio</label>
     <div class="col-md-6">

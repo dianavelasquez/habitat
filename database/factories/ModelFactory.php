@@ -22,3 +22,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Cliente::class,function (Faker\generator $faker){
+    return [
+        'cod_sim' => random_int(1000, 9999),
+        'nombre' => $faker->name,
+        'dui' => random_int(0,99999999).'-'.random_int(0,1),
+        'nit' => random_int(0,9999).'-'.random_int(0,999999).'-'.random_int(0,999).'-'.random_int(0,1),
+        'telefono' => random_int(6000,7999).'-'.random_int(0,9999),
+        'direccion' => $faker->address,
+        'ubicacion' => $faker->country,
+    ];
+});

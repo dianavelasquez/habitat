@@ -24,9 +24,6 @@ class PdfController extends Controller
         $fecha = date('d-m-Y');
         $invoice = "Primero";
         $view = \View::make('pdf.invoice', compact('data','fecha','invoice'))->render();
-        if (isset($view)) {
-  $view->page_text(770, 580, "Page {PAGE_NUM} of {PAGE_COUNT}", $font, 10, array(0, 0, 0));
-}
         $dompdf = \App::make('dompdf.wrapper');
         $dompdf->loadHTML($view);
         $dompdf->setPaper('letter', 'landscape');

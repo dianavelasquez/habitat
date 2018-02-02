@@ -95,4 +95,28 @@ class AlbanilController extends Controller
     {
         //
     }
+
+    public function baja($cadena)
+    {
+        $datos = explode("+",$cadena);
+        $id = $datos[0];
+        $motivo = $datos[1];
+
+        $albanil = Albanil::find($id);
+        $albanil->estado = 2;
+        $albanil->motivo = $motivo;
+        $albanil->fechabaja = date('Y-m-d');
+        $albanil->save();
+        return redirect('/albaniles')->with('mensaje','Albañil dado de baja');
+    }
+
+    public function alta($id)
+    {
+        $albanil = Albanil::find($id);
+        $albanil->estado = 1;
+        $albanil->motivo = "";
+        $albanil->fechabaja = null;
+        $albanil->save();
+        return redirect('/albaniles')->with('mensaje','Albañil dado de alta');
+    }
 }

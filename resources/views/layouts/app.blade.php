@@ -137,7 +137,7 @@
     <footer class="main-footer">
     <div class="pull-right hidden-xs">
     </div>
-    <strong>Copyright &copy; 2017 <a href="http://almsaeedstudio.com">Universidad de El Salvador. FMP</a>.</strong> All rights
+    <strong>Copyright &copy; 2018 <a href="http://almsaeedstudio.com">Universidad de El Salvador. FMP</a>.</strong> All rights
     reserved.
   </footer>
   

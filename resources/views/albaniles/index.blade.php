@@ -73,7 +73,7 @@
                         }).then(function (text) {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#baja').attr('action','http://'+dominio+'/sisverapaz/public/albaniles/baja/'+id+'+'+text);
+                            $('#baja').attr('action','http://'+dominio+'/habitat/public/albaniles/baja/'+id+'+'+text);
                             //document.getElmentById('baja').submit();
                             $('#baja').submit();
                             swal({
@@ -95,7 +95,7 @@
                         }).then(function () {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#alta').attr('action','http://'+dominio+'/sisverapaz/public/albaniles/alta/'+id);
+                            $('#alta').attr('action','http://'+dominio+'/habitat/public/albaniles/alta/'+id);
                             //document.getElmentById('baja').submit();
                             $('#alta').submit();
                             swal({

@@ -21,8 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::Resource('clientes','ClienteController');
 
+Route::post('albaniles/baja/{id}','AlbanilController@baja')->name('albaniles.baja');
+Route::post('albaniles/alta/{id}','AlbanilController@alta')->name('albaniles.alta');
+Route::get('albaniles/eliminados','AlbanilController@eliminados');
 Route::Resource('albaniles','AlbanilController');
+
 Route::Resource('materiales','MaterialController');
+
 Route::Resource('presupuestos','PresupuestoController');
 Route::Resource('tipomejoras','TipomejoraController');
 Route::get('pdf', 'PdfController@invoice');

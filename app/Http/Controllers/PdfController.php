@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Dompdf\Dompdf;
+use App\Cliente;
+use PDF;
 
 class PdfController extends Controller
 {
@@ -19,15 +20,26 @@ class PdfController extends Controller
 
     public function invoice()
     {
-        //return \PDF::loadFile('http://www.github.com')->stream('github.pdf'); 
+        $clientes = Cliente::all();
+        return \PDF::loadView('pdf.body',compact('clientes'))->stream('prueba.pdf'); 
  
-
-        //$dompdf = new Dompdf();
+        /*
+        //$pdf = PDF::loadView('pdf.invoice', $clientes);
+        $pdf = PDF::loadView('pdf.invoice', $clientes);
+        return $pdf->stream('invoice.pdf');
+        //return $view;
+//$pdf = PDF::loadView('pdf.invoice', compact('clientes'));
+//return $pdf->download();
+        /*$dompdf = new Dompdf();
         $data = $this->getData();
-        //$fecha = date('d-m-Y');
+        $fecha = date('d-m-Y');
         $invoice = "Primero";
-        $view = \View::make('pdf.invoice', compact('data','invoice'))->render();
-        return \PDF::loadView('pdf.invoice')->stream('github.pdf'); 
+        $pdf = PDF::loadView('pdf.invoice', $data);
+        //$view = \View::make('pdf.invoice', compact('data','fecha','invoice'))->render();
+        //return $view;
+         
+        //$pdf = \PDF::loadHTML($view)->setPaper('a4')->setOrientation('landscape'); 
+        return $pdf->stream('github.pdf');
         /*$dompdf = \App::make('dompdf.wrapper');
         $dompdf->loadHTML($view);
         $dompdf->setPaper('letter', 'landscape');

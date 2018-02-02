@@ -12,7 +12,7 @@
 	<main>
       <div id="invoicec">
           <h1>Titulo</h1>
-          <div class="date">Fecha de consulta: {{$fecha}}</div>
+          <div class="date">Fecha de consulta: }</div>
         </div>
         <br>
 		<table border="0" cellspacing="0" cellpadding="0">

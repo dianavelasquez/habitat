@@ -19,15 +19,23 @@ class PdfController extends Controller
 
     public function invoice()
     {
-        $dompdf = new Dompdf();
+        //return \PDF::loadFile('http://www.github.com')->stream('github.pdf'); 
+ 
+
+        //$dompdf = new Dompdf();
         $data = $this->getData();
-        $fecha = date('d-m-Y');
+        //$fecha = date('d-m-Y');
         $invoice = "Primero";
-        $view = \View::make('pdf.invoice', compact('data','fecha','invoice'))->render();
-        $dompdf = \App::make('dompdf.wrapper');
+        $view = \View::make('pdf.invoice', compact('data','invoice'))->render();
+        return \PDF::loadView('pdf.invoice')->stream('github.pdf'); 
+        /*$dompdf = \App::make('dompdf.wrapper');
         $dompdf->loadHTML($view);
         $dompdf->setPaper('letter', 'landscape');
-        return $dompdf->stream('invoice');
+
+        /*$canvas = $dompdf->get_canvas();
+        $canvas->page_text(30,755,'Generado: '.date('d-m-Y'),null,10,array(0,0,0));
+        $canvas->page_text(500,755,("Página").": {PAGE_NUM} de {PAGE_COUNT}",null,10,array(0,0,0));*/
+        //return $dompdf->stream('invoice');
     }
 
     public function getData()

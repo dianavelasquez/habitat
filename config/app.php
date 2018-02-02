@@ -178,7 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         //Provider para DOMpdf
-        Barryvdh\DomPDF\ServiceProvider::class,
+        //Barryvdh\DomPDF\ServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
     ],
 
@@ -231,7 +232,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         //Alias dompdf
-        'PDF' => Barryvdh\DomPDF\Facade::class,
+        //'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'Image' => Barryvdh\Snappy\Facades\SnappyImage::class,
+
     ],
 
 ];

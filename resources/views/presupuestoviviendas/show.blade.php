@@ -2,8 +2,7 @@
 
 @section('migasdepan')
 <h1>
-        
-        <small>Ver presupuesto <b>{{ $presupuestovivienda->nombre }}</b></small>
+        <small>Ver presupuesto <b>{{ $presupuestovivienda->tipovivienda->nombre }}</b></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ url('/presupuestoviviendas') }}"><i class="fa fa-dashboard"></i> Preupuestos</a></li>
@@ -25,8 +24,8 @@
                   </div>
 
                         <div class="form-group{{ $errors->has('materialvivienda_id') ? ' has-error' : '' }}">
-                    <label for="materialvivienda_id" class="col-md-4 control-label">Material: </label>
-                    <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->materialvivienda->nombre}}</label><br>
+                    <label for="materialvivienda_id" class="col-md-4 control-label">Total: </label>
+                    <label for="nombre" class="col-md-4 control-label">${{number_format($presupuestovivienda->total,2)}}</label><br>
                   </div>
 
                        <table class="table">  
@@ -37,18 +36,21 @@
                                   <th>  Unidad</th>
                                   <th>  Precio unitario</th>
                                   <th>  Cantidad</th>
+                                  <th>  Sub total</th>
+
                               </tr>
                           </thead>
                           <tbody>
-                              @foreach($materiales as $materiales)
-                           <tr>  
-                              <td> {{$material->codigo}} </td>
-                              <td> {{$material->nombre}} </td>
-                              <td> {{$material->unidad_medida}} </td>
-                              <td> {{$material->precio_unitario}} </td>
-                              <td> {{$material->cantidad}} </td>
-                          </tr>
-                            @endforeach
+                              @foreach($presuymats as $presuymat)
+                                <tr>
+                                  <td>{{$presuymat->materialvivienda->codigo}}</td>
+                                  <td>{{$presuymat->materialvivienda->nombre}}</td>
+                                  <td>{{$presuymat->materialvivienda->unidad_medida}}</td>
+                                  <td>{{$presuymat->materialvivienda->precio_unitario}}</td>
+                                  <td>{{$presuymat->cantidad}}</td>
+                                  <td>{{number_format($presuymat->materialvivienda->precio_unitario * $presuymat->cantidad,2)}}</td>
+                                </tr>
+                              @endforeach
                         </tbody>
                        </table>
 

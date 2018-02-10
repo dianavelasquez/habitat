@@ -10,11 +10,11 @@ class Presuymat extends Model
 
     public function presupuestovivienda()
     {
-    	return $this->belongsTo('Presupuestovivienda');
+    	return $this->belongsTo('App\Presupuestovivienda');
     }
 
     public function materialvivienda()
     {
-    	return $this->belongsTo('Materialvivienda');
+    	return $this->belongsTo('App\Materialvivienda');
     }
 }

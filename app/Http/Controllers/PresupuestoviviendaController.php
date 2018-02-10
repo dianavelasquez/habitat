@@ -81,7 +81,8 @@ class PresupuestoviviendaController extends Controller
     public function show($id)
     {
         $presupuestovivienda = Presupuestovivienda::findorFail($id);
-        return view('presupuestoviviendas.show',compact('presupuestovivienda'));    }
+        $presuymats = Presuymat::where('presupuestovivienda_id',$presupuestovivienda->id)->get();
+        return view('presupuestoviviendas.show',compact('presupuestovivienda','presuymats'));    }
 
     /**
      * Show the form for editing the specified resource.

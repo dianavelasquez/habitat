@@ -28,7 +28,9 @@ class AddColumnAlbanilTable extends Migration
     public function down()
     {
         Schema::table('albanils', function (Blueprint $table) {
-            //
+            $table->dropColumn('fechabaja');
+            $table->dropColumn('estado');
+            $table->dropColumn('motivo');
         });
     }
 }

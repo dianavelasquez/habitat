@@ -25,9 +25,7 @@
               <table class="table table-striped table-bordered table-hover" id="example2">
           <thead>
                   <th>Id</th>
-                  <th>Cliente</th>
                   <th>Tipo de vivienda</th>
-                  <th>Fecha</th>
                   <th>Acción</th>
                 </thead>
 
@@ -35,9 +33,7 @@
                   @foreach($presupuestoviviendas as $presupuestovivienda)
                   <tr>
                     <td>{{ $presupuestovivienda->id }}</td>
-                    <td>{{ $presupuestovivienda->cliente->nombre }}</td>
                     <td>{{ $presupuestovivienda->tipovivienda->nombre }}</td>
-                    <td>{{ $presupuestovivienda->fecha }}</td>
                     <td>
                                 {{ Form::open(['method' => 'POST', 'id' => 'baja', 'class' => 'form-horizontal'])}}
                                 <a href="{{ url('presupuestoviviendas/'.$presupuestovivienda->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>

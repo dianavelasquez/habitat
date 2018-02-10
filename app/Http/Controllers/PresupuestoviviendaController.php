@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
 use App\Tipovivienda;
 use App\Materialvivienda;
 use App\Presupuestovivienda;
@@ -32,11 +31,10 @@ class PresupuestoviviendaController extends Controller
      */
     public function create()
     {
-        $clientes = Cliente::all();
         $tipoviviendas = Tipovivienda::all();
         $materialviviendas = Materialvivienda::all();
         $presupuestoviviendas = Presupuestovivienda::all();
-        return view('presupuestoviviendas.create',compact('clientes','tipoviviendas','materialviviendas','presupuestoviviendas'));
+        return view('presupuestoviviendas.create',compact('tipoviviendas','materialviviendas','presupuestoviviendas'));
     }
 
     /**
@@ -47,13 +45,12 @@ class PresupuestoviviendaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         \DB::beginTransaction();
         try{
             $count = $request->contador;
 
             $presupuestovivienda = Presupuestovivienda::create([
-                'cliente_id' => $request->cliente_id,
                 'tipovivienda_id' => $request->tipovivienda_id,
                 'fecha' => $request->fecha,
                 'materialvivienda_id' => $request->materialvivienda_id,
@@ -62,7 +59,7 @@ class PresupuestoviviendaController extends Controller
 
             for($i = 0; $i<$count;$i++)
             {
-                Materialvivienda::create([
+                Presupuestovivienda::create([
                 'nombre' => $request->materiales[$i],
                 'codigo' => $request->codigos[$i],
                 'unidad_medida' => $request->unidades[$i],

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTotalPresupuestoviviendasTable extends Migration
+class DeleteClientesFromPresupuestoviviendas extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,8 @@ class AddTotalPresupuestoviviendasTable extends Migration
     public function up()
     {
         Schema::table('presupuestoviviendas', function (Blueprint $table) {
-            $table->double('total',8,2);
-            $table->date('fechabaja')->nullable();
-            $table->integer('estado')->default(1);
-            $table->string('motivo')->nullable();
+            $table->dropForeign('presupuestoviviendas_cliente_id_foreign');
+            $table->dropColumn('cliente_id');
         });
     }
 
@@ -29,10 +27,8 @@ class AddTotalPresupuestoviviendasTable extends Migration
     public function down()
     {
         Schema::table('presupuestoviviendas', function (Blueprint $table) {
-            $table->dropColumn('total');
-            $table->dropColumn('fechabaja');
-            $table->dropColumn('estado');
-            $table->dropColumn('motivo');
+            $table->integer('cliente_id')->unsigned();
+            $table->foreign('cliente_id')->references('id')->on('clientes');
         });
     }
 }

@@ -11,4 +11,9 @@ class Materialvivienda extends Model
     {
     	return $this->hasMany('App\Presupuestovivienda');
     }
+
+    public function presuymat()
+    {
+    	return $this->hasMany('App\Presuymat');
+    }
 }

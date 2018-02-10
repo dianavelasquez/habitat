@@ -14,7 +14,7 @@ class Deletesubtotal extends Migration
     public function up()
     {
         Schema::table('presupuestos', function (Blueprint $table) {
-            $table->dropColumn('subtotal');
+            //$table->dropColumn('subtotal');
         });
     }
 
@@ -26,7 +26,7 @@ class Deletesubtotal extends Migration
     public function down()
     {
         Schema::table('presupuestos', function (Blueprint $table) {
-            //
+            
         });
     }
 }

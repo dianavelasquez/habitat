@@ -12,9 +12,4 @@ class Cliente extends Model
     {
     	return $this->hasMany('App\Presupuesto');
     }
-
-    public function presupuestovivienda()
-    {
-    	return $this->hasMany('App\Presupuestovivienda');
-    }
 }

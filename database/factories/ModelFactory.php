@@ -25,7 +25,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Cliente::class,function (Faker\generator $faker){
     return [
-        'cod_sim' => random_int(1000, 9999),
+        'codigo_sim' => random_int(1000, 9999),
         'nombre' => $faker->name,
         'dui' => random_int(0,99999999).'-'.random_int(0,1),
         'nit' => random_int(0,9999).'-'.random_int(0,999999).'-'.random_int(0,999).'-'.random_int(0,1),

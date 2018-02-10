@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMotivoToPresupuestostable extends Migration
+class DeleteClientesFromPresupuestovivienda extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddMotivoToPresupuestostable extends Migration
      */
     public function up()
     {
-        Schema::table('presupuestos', function (Blueprint $table) {
-            $table->string('motivo')->nullable();
-        });
+        //
     }
 
     /**
@@ -25,8 +23,6 @@ class AddMotivoToPresupuestostable extends Migration
      */
     public function down()
     {
-        Schema::table('presupuestos', function (Blueprint $table) {
-            $table->dropColumn('motivo');
-        });
+        //
     }
 }

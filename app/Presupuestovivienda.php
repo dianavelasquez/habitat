@@ -8,11 +8,6 @@ class Presupuestovivienda extends Model
 {
     protected $guarded = [];
 
-    public function cliente()
-    {
-    	return $this->belongsTo('App\Cliente');
-    }
-
     public function tipovivienda()
     {
     	return $this->belongsTo('App\Tipovivienda');
@@ -21,5 +16,10 @@ class Presupuestovivienda extends Model
     public function materialvivienda()
     {
     	return $this->belongsTo('App\Materialvivienda');
+    }
+
+    public function presuymat()
+    {
+    	return $this->hasMany('App\Presuymat');
     }
 }

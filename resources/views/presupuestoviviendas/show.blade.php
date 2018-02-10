@@ -19,20 +19,10 @@
                 <div class="panel-heading">Datos del Presupuesto </div>
                 <div class="panel-body">
 
-                  <div class="form-group{{ $errors->has('cliente_id') ? ' has-error' : '' }}">
-                    <label for="cliente_id" class="col-md-4 control-label">Nombre del cliente: </label>
-                    <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->cliente->nombre}}</label><br>
-                  </div>
-
                   <div class="form-group{{ $errors->has('tipovivienda_id') ? ' has-error' : '' }}">
                     <label for="tipovivienda_id" class="col-md-4 control-label">Tipo de vivienda: </label>
                     <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->tipovivienda->nombre}}</label><br>
                   </div>
-                        
-                        <div class="form-group{{ $errors->has('fecha') ? ' has-error' : '' }}">
-                            <label for="fecha" class="col-md-4 control-label">Fecha registro: </label>
-                            <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->fecha->format('d-m-Y')}}</label><br>
-                        </div>
 
                         <div class="form-group{{ $errors->has('materialvivienda_id') ? ' has-error' : '' }}">
                     <label for="materialvivienda_id" class="col-md-4 control-label">Material: </label>

@@ -2,12 +2,12 @@
 
 @section('migasdepan')
 <h1>
-        Materiales
-        <small>Control de materiales</small>
+        Tipos
+        <small>Control de tipos de vivienda</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ url('/materiales') }}"><i class="fa fa-dashboard"></i> Materiales</a></li>
-        <li class="active">Listado de materiales</li>
+        <li><a href="{{ url('/tipoviviendas') }}"><i class="fa fa-dashboard"></i> Tipos de vivienda</a></li>
+        <li class="active">Listado de tipos de vivienda</li>
       </ol>
 @endsection
 
@@ -17,7 +17,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Listado</h3>
-                <a href="{{ url('/materiales/create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
+                <a href="{{ url('/tipoviviendas/create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
 
             </div>
             <!-- /.box-header -->
@@ -25,21 +25,21 @@
               <table class="table table-striped table-bordered table-hover" id="example2">
           <thead>
                   <th>Id</th>
-                  <th>Código</th>
                   <th>Nombre</th>
+                  <th>Medidas</th>
                   <th>Acción</th>
                 </thead>
                 <tbody>
-                  @foreach($materiales as $material)
+                  @foreach($tipoviviendas as $tipovivienda)
                   <tr>
-                    <td>{{ $material->id }}</td>
-                    <td>{{ $material->codigo }}</td>
-                    <td>{{ $material->nombre }}</td>
+                    <td>{{ $tipovivienda->id }}</td>
+                    <td>{{ $tipovivienda->nombre }}</td>
+                    <td>{{ $tipovivienda->medida }}</td>
                     <td>
                                 {{ Form::open(['method' => 'POST', 'id' => 'baja', 'class' => 'form-horizontal'])}}
-                                <a href="{{ url('materiales/'.$material->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
-                                <a href="{{ url('/materiales/'.$material->id.'/edit') }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-text-size"></span></a>
-                                <button class="btn btn-danger btn-xs" type="button" onclick={{ "baja(".$material->id.")" }}><span class="glyphicon glyphicon-trash"></span></button>
+                                <a href="{{ url('tipoviviendas/'.$tipovivienda->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="{{ url('/tipoviviendas/'.$tipovivienda->id.'/edit') }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-text-size"></span></a>
+                                <button class="btn btn-danger btn-xs" type="button" onclick={{ "baja(".$tipovivienda->id.")" }}><span class="glyphicon glyphicon-trash"></span></button>
                                 {{ Form::close()}}
 
                         </td>
@@ -71,7 +71,7 @@
                         }).then(function (text) {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#baja').attr('action','http://'+dominio+'/sisverapaz/public/materiales/baja/'+id+'+'+text);
+                            $('#baja').attr('action','http://'+dominio+'/habitat/public/tipoviviendas/baja/'+id+'+'+text);
                             //document.getElmentById('baja').submit();
                             $('#baja').submit();
                             swal({
@@ -93,7 +93,7 @@
                         }).then(function () {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#alta').attr('action','http://'+dominio+'/sisverapaz/public/materiales/alta/'+id);
+                            $('#alta').attr('action','http://'+dominio+'/habitat/public/tipoviviendas/alta/'+id);
                             //document.getElmentById('baja').submit();
                             $('#alta').submit();
                             swal({

@@ -3,25 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Albanil;
-use App\Clientes;
-use App\Http\Requests\AlbalisRequest;
-class AlbanilesController extends Controller
+use App\Materialvivienda;
+
+class MaterialviviendaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    } 
-
     public function index()
     {
-        $albaniles = Albanil::all();
-        return view('albaniles.index')->with('albaniles', $albaniles);
+        $materialviviendas = Materialvivienda::all();
+        return view('materialviviendas.index',compact('materialviviendas'));
     }
 
     /**
@@ -31,8 +29,7 @@ class AlbanilesController extends Controller
      */
     public function create()
     {
-        $clientes = Clientes::all();
-        return view('albaniles.create',compact('albaniles'));
+        return view('materialviviendas.create');
     }
 
     /**
@@ -41,10 +38,10 @@ class AlbanilesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AlbalisRequest $request)
+    public function store(Request $request)
     {
-        Albanil::create($request->All());
-        return redirect('albaniles')->with('mensaje', 'Albañil registrado');
+        Materialvivienda::create($request->All());
+        return redirect('materialviviendas')->with('mensaje', 'Material registrado');
     }
 
     /**
@@ -55,8 +52,8 @@ class AlbanilesController extends Controller
      */
     public function show($id)
     {
-        $albanil = Albanil::findorFail($id);
-        return view('albaniles.show', compact('albanil'));
+        $materialvivienda = Materialvivienda::findorFail($id);
+        return view('materialviviendas.show', compact('materialvivienda'));
     }
 
     /**
@@ -67,8 +64,8 @@ class AlbanilesController extends Controller
      */
     public function edit($id)
     {
-        $albanil = Albanil::findorFail($id);
-        return view('albaniles.edit'), compact('albanil');
+        $materialvivienda = Materialvivienda::findorFail($id);
+        return view('materialviviendas.edit',compact('materialvivienda'));
     }
 
     /**
@@ -80,10 +77,10 @@ class AlbanilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $albanil = Albanil::findorfail($id);
-        $albanil->fill($request->All());
-        $albanil->save();
-        return redirect('/albaniles')->with('mensaje', 'Información actualizada')
+        $materialvivienda = Materialvivienda::findorFail($id);
+        $materialvivienda->fill($request->All());
+        $materialvivienda->save();
+        return redirect('/materialviviendas')->with('mensaje', 'Información actualizada');
     }
 
     /**

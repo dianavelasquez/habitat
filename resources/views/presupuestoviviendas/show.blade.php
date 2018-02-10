@@ -3,10 +3,10 @@
 @section('migasdepan')
 <h1>
         
-        <small>Ver presupuesto <b>{{ $presupuesto->nombre }}</b></small>
+        <small>Ver presupuesto <b>{{ $presupuestovivienda->nombre }}</b></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ url('/presupuestos') }}"><i class="fa fa-dashboard"></i> Usuarios</a></li>
+        <li><a href="{{ url('/presupuestoviviendas') }}"><i class="fa fa-dashboard"></i> Preupuestos</a></li>
         <li class="active">Ver</li>
       </ol>
 @endsection
@@ -21,45 +21,49 @@
 
                   <div class="form-group{{ $errors->has('cliente_id') ? ' has-error' : '' }}">
                     <label for="cliente_id" class="col-md-4 control-label">Nombre del cliente: </label>
-                    <label for="nombre" class="col-md-4 control-label">{{$presupuesto->cliente->nombre}}</label><br>
+                    <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->cliente->nombre}}</label><br>
                   </div>
 
-                  <div class="form-group{{ $errors->has('tipomejora_id') ? ' has-error' : '' }}">
-                    <label for="tipomejora_id" class="col-md-4 control-label">Tipo de mejora: </label>
-                    <label for="nombre" class="col-md-4 control-label">{{$presupuesto->tipomejora->nombre}}</label><br>
+                  <div class="form-group{{ $errors->has('tipovivienda_id') ? ' has-error' : '' }}">
+                    <label for="tipovivienda_id" class="col-md-4 control-label">Tipo de vivienda: </label>
+                    <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->tipovivienda->nombre}}</label><br>
                   </div>
                         
-                        <div class="form-group{{ $errors->has('fecha_inicio') ? ' has-error' : '' }}">
-                            <label for="fecha_inicio" class="col-md-4 control-label">Fecha inicio: </label>
-                            <label for="nombre" class="col-md-4 control-label">{{$presupuesto->fecha_inicio->format('d-m-Y')}}</label><br>
+                        <div class="form-group{{ $errors->has('fecha') ? ' has-error' : '' }}">
+                            <label for="fecha" class="col-md-4 control-label">Fecha registro: </label>
+                            <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->fecha->format('d-m-Y')}}</label><br>
                         </div>
 
-                        <div class="form-group{{ $errors->has('fecha_fin') ? ' has-error' : '' }}">
-                            <label for="fecha_fin" class="col-md-4 control-label">Fecha finalización: </label>
-                            <label for="nombre" class="col-md-4 control-label">{{$presupuesto->fecha_fin->format('d-m-Y')}}</label><br>
-                        </div>
+                        <div class="form-group{{ $errors->has('materialvivienda_id') ? ' has-error' : '' }}">
+                    <label for="materialvivienda_id" class="col-md-4 control-label">Material: </label>
+                    <label for="nombre" class="col-md-4 control-label">{{$presupuestovivienda->materialvivienda->nombre}}</label><br>
+                  </div>
 
                        <table class="table">  
-                          <thead> 
+                          <thead>
                               <tr>  
+                                  <th>  Código</th>
                                   <th>  Material</th>
-                                  <th>  cantidad</th>
-                                  <th>  precio unitario</th>
+                                  <th>  Unidad</th>
+                                  <th>  Precio unitario</th>
+                                  <th>  Cantidad</th>
                               </tr>
                           </thead>
                           <tbody>
-                              @foreach($detalles as $detalle)
+                              @foreach($materiales as $materiales)
                            <tr>  
-                              <td> {{$detalle->material->nombre}} </td>
-                              <td> {{$detalle->cantidad}} </td>
-                              <td> {{$detalle->precio_unitario}} </td>
+                              <td> {{$material->codigo}} </td>
+                              <td> {{$material->nombre}} </td>
+                              <td> {{$material->unidad_medida}} </td>
+                              <td> {{$material->precio_unitario}} </td>
+                              <td> {{$material->cantidad}} </td>
                           </tr>
                             @endforeach
                         </tbody>
                        </table>
 
-                      {{ Form::open(['route' => ['presupuestos.destroy', $presupuesto->id ], 'method' => 'DELETE', 'class' => 'form-horizontal'])}}
-                      <a href="{{ url('/presupuestos/'.$presupuesto->id.'/edit') }}" class="btn btn-warning"><span class="glyphicon glyphicon-text-size"></span> Editar</a> |
+                      {{ Form::open(['route' => ['presupuestoviviendas.destroy', $presupuestovivienda->id ], 'method' => 'DELETE', 'class' => 'form-horizontal'])}}
+                      <a href="{{ url('/presupuestoviviendas/'.$presupuestovivienda->id.'/edit') }}" class="btn btn-warning"><span class="glyphicon glyphicon-text-size"></span> Editar</a> |
                         <button class="btn btn-danger" type="button" onclick="
                         return swal({
                           title: 'Eliminar presupuesto',

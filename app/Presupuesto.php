@@ -28,8 +28,4 @@ class Presupuesto extends Model
         return $this->belongsTo('App\Albanil');
     }
 
-    public function material()
-    {
-        return $this->belongsTo('App\Material');
-    }
 }

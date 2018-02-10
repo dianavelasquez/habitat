@@ -28,6 +28,19 @@ Route::Resource('albaniles','AlbanilController');
 
 Route::Resource('materiales','MaterialController');
 
+Route::post('presupuestos/baja/{id}','PresupuestoController@baja')->name('presupuestos.baja');
+Route::post('presupuestos/alta/{id}','PresupuestoController@alta')->name('presupuestos.alta');
+Route::get('presupuestos/eliminados','PresupuestoController@eliminados');
 Route::Resource('presupuestos','PresupuestoController');
+
 Route::Resource('tipomejoras','TipomejoraController');
 Route::get('pdf', 'PdfController@invoice');
+
+Route::Resource('tipoviviendas','TipoviviendaController');
+
+Route::Resource('materialviviendas','MaterialviviendaController');
+
+Route::post('presupuestoviviendas/baja/{id}','PresupuestoviviendaController@baja')->name('presupuestoviviendas.baja');
+Route::post('presupuestoviviendas/alta/{id}','PresupuestoviviendaController@alta')->name('presupuestoviviendas.alta');
+Route::get('presupuestoviviendas/eliminados','PresupuestoviviendaController@eliminados');
+Route::Resource('presupuestoviviendas','PresupuestoviviendaController');

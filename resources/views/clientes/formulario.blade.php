@@ -1,11 +1,11 @@
-<div class="form-group{{$errors->has('cod_sim') ? 'has-error' : '' }}">
-	<label for="cod_sim" class="col-md-4 control-label">Código SIM</label>
+<div class="form-group{{$errors->has('codigo_sim') ? 'has-error' : '' }}">
+	<label for="codigo_sim" class="col-md-4 control-label">Código SIM</label>
 
 	<div class="col-md-6">
-		{{ Form::text('cod_sim', null, ['class' => 'form-control']) }}
-		@if ($errors->has('cod_sim'))
+		{{ Form::text('codigo_sim', null, ['class' => 'form-control','data-inputmask' => '"mask": "999999999999"','data-mask']) }}
+		@if ($errors->has('codigo_sim'))
 		<span class="help-block">
-			<strong>{{ $errors->first('cod_sim') }}</strong>
+			<strong>{{ $errors->first('codigo_sim') }}</strong>
 		</span>
 		@endif
 	</div>

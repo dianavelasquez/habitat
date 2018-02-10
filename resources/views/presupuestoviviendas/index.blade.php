@@ -2,12 +2,12 @@
 
 @section('migasdepan')
 <h1>
-        Materiales
-        <small>Control de materiales</small>
+        Presupuestos de vivienda
+        <small>Control de presupuestos</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ url('/materiales') }}"><i class="fa fa-dashboard"></i> Materiales</a></li>
-        <li class="active">Listado de materiales</li>
+        <li><a href="{{ url('/presupuestoviviendas') }}"><i class="fa fa-dashboard"></i> Presupuestos de vivienda</a></li>
+        <li class="active">Listado de presupuestos</li>
       </ol>
 @endsection
 
@@ -17,7 +17,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Listado</h3>
-                <a href="{{ url('/materiales/create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
+                <a href="{{ url('/presupuestoviviendas/create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
 
             </div>
             <!-- /.box-header -->
@@ -25,21 +25,24 @@
               <table class="table table-striped table-bordered table-hover" id="example2">
           <thead>
                   <th>Id</th>
-                  <th>Código</th>
-                  <th>Nombre</th>
+                  <th>Cliente</th>
+                  <th>Tipo de vivienda</th>
+                  <th>Fecha</th>
                   <th>Acción</th>
                 </thead>
+
                 <tbody>
-                  @foreach($materiales as $material)
+                  @foreach($presupuestoviviendas as $presupuestovivienda)
                   <tr>
-                    <td>{{ $material->id }}</td>
-                    <td>{{ $material->codigo }}</td>
-                    <td>{{ $material->nombre }}</td>
+                    <td>{{ $presupuestovivienda->id }}</td>
+                    <td>{{ $presupuestovivienda->cliente->nombre }}</td>
+                    <td>{{ $presupuestovivienda->tipovivienda->nombre }}</td>
+                    <td>{{ $presupuestovivienda->fecha }}</td>
                     <td>
                                 {{ Form::open(['method' => 'POST', 'id' => 'baja', 'class' => 'form-horizontal'])}}
-                                <a href="{{ url('materiales/'.$material->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
-                                <a href="{{ url('/materiales/'.$material->id.'/edit') }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-text-size"></span></a>
-                                <button class="btn btn-danger btn-xs" type="button" onclick={{ "baja(".$material->id.")" }}><span class="glyphicon glyphicon-trash"></span></button>
+                                <a href="{{ url('presupuestoviviendas/'.$presupuestovivienda->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="{{ url('/presupuestoviviendas/'.$presupuestovivienda->id.'/edit') }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-text-size"></span></a>
+                                <button class="btn btn-danger btn-xs" type="button" onclick={{ "baja(".$presupuestovivienda->id.")" }}><span class="glyphicon glyphicon-trash"></span></button>
                                 {{ Form::close()}}
 
                         </td>
@@ -71,7 +74,7 @@
                         }).then(function (text) {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#baja').attr('action','http://'+dominio+'/sisverapaz/public/materiales/baja/'+id+'+'+text);
+                            $('#baja').attr('action','http://'+dominio+'/habitat/public/presupuestoviviendas/baja/'+id+'+'+text);
                             //document.getElmentById('baja').submit();
                             $('#baja').submit();
                             swal({
@@ -93,7 +96,7 @@
                         }).then(function () {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#alta').attr('action','http://'+dominio+'/sisverapaz/public/materiales/alta/'+id);
+                            $('#alta').attr('action','http://'+dominio+'/habitat/public/presupuestoviviendas/alta/'+id);
                             //document.getElmentById('baja').submit();
                             $('#alta').submit();
                             swal({

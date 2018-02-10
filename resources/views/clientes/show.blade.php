@@ -18,9 +18,9 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Detalles de cliente </div>
                 <div class="panel-body">
-                        <div class="form-group{{ $errors->has('cod_sim') ? ' has-error' : '' }}">
-                            <label for="cod_sim" class="col-md-4 control-label">Código SIM: </label>
-                            <label for="nombre" class="col-md-4 control-label">{{$cliente->cod_sim}}</label><br>
+                        <div class="form-group{{ $errors->has('codigo_sim') ? ' has-error' : '' }}">
+                            <label for="codigo_sim" class="col-md-4 control-label">Código SIM: </label>
+                            <label for="nombre" class="col-md-4 control-label">{{$cliente->codigo_sim}}</label><br>
                             
                         </div>
 

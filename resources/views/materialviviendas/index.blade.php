@@ -2,11 +2,11 @@
 
 @section('migasdepan')
 <h1>
-        Materiales
+        Materiales de vivienda
         <small>Control de materiales</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ url('/materiales') }}"><i class="fa fa-dashboard"></i> Materiales</a></li>
+        <li><a href="{{ url('/materialviviendas') }}"><i class="fa fa-dashboard"></i> Materiales</a></li>
         <li class="active">Listado de materiales</li>
       </ol>
 @endsection
@@ -17,7 +17,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Listado</h3>
-                <a href="{{ url('/materiales/create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
+                <a href="{{ url('/materialviviendas/create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
 
             </div>
             <!-- /.box-header -->
@@ -27,19 +27,23 @@
                   <th>Id</th>
                   <th>Código</th>
                   <th>Nombre</th>
+                  <th>Unidad de medida</th>
+                  <th>Precio Unitario</th>
                   <th>Acción</th>
                 </thead>
                 <tbody>
-                  @foreach($materiales as $material)
+                  @foreach($materialviviendas as $materialvivienda)
                   <tr>
-                    <td>{{ $material->id }}</td>
-                    <td>{{ $material->codigo }}</td>
-                    <td>{{ $material->nombre }}</td>
+                    <td>{{ $materialvivienda->id }}</td>
+                    <td>{{ $materialvivienda->codigo }}</td>
+                    <td>{{ $materialvivienda->nombre }}</td>
+                    <td>{{ $materialvivienda->unidad_medida }}</td>
+                    <td>{{ $materialvivienda->precio_unitario }}</td>
                     <td>
                                 {{ Form::open(['method' => 'POST', 'id' => 'baja', 'class' => 'form-horizontal'])}}
-                                <a href="{{ url('materiales/'.$material->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
-                                <a href="{{ url('/materiales/'.$material->id.'/edit') }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-text-size"></span></a>
-                                <button class="btn btn-danger btn-xs" type="button" onclick={{ "baja(".$material->id.")" }}><span class="glyphicon glyphicon-trash"></span></button>
+                                <a href="{{ url('materialviviendas/'.$materialvivienda->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="{{ url('/materialviviendas/'.$materialvivienda->id.'/edit') }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-text-size"></span></a>
+                                <button class="btn btn-danger btn-xs" type="button" onclick={{ "baja(".$materialvivienda->id.")" }}><span class="glyphicon glyphicon-trash"></span></button>
                                 {{ Form::close()}}
 
                         </td>
@@ -71,7 +75,7 @@
                         }).then(function (text) {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#baja').attr('action','http://'+dominio+'/sisverapaz/public/materiales/baja/'+id+'+'+text);
+                            $('#baja').attr('action','http://'+dominio+'/sisverapaz/public/materialviviendas/baja/'+id+'+'+text);
                             //document.getElmentById('baja').submit();
                             $('#baja').submit();
                             swal({
@@ -93,7 +97,7 @@
                         }).then(function () {
                             var dominio = window.location.host;
                             var form = $(this).parents('form');
-                            $('#alta').attr('action','http://'+dominio+'/sisverapaz/public/materiales/alta/'+id);
+                            $('#alta').attr('action','http://'+dominio+'/sisverapaz/public/materialviviendas/alta/'+id);
                             //document.getElmentById('baja').submit();
                             $('#alta').submit();
                             swal({

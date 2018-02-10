@@ -53,6 +53,8 @@
                         <li><a href="{{ url('/materiales') }}"> Materiales</a>
                         </li>
                         <li><a href="{{ url('/presupuestos') }}"> Presupuestos</a>
+
+                        <li><a href="{{ url('/presupuestoviviendas') }}"> Vivienda</a>
                         </li>
                         <li><a href="{{ url('/tipomejoras') }}"> Mejoras</a>
                         </li>

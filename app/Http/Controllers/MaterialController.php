@@ -20,7 +20,7 @@ class MaterialController extends Controller
 
     public function index()
     {
-        $materiales = Material::paginate(10);
+        $materiales = Material::all();
         return view('materiales.index',compact('materiales'));
     }
 
@@ -55,7 +55,6 @@ class MaterialController extends Controller
     public function show($id)
     {
         $material = Material::findorFail($id);
-
         return view('materiales.show', compact('material'));
     }
 

@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Albanil;
+use App\Tipovivienda;
 
-class AlbanilController extends Controller
+class TipoviviendaController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +18,8 @@ class AlbanilController extends Controller
      */
     public function index()
     {
-        $albaniles = Albanil::all();
-        return view('albaniles.index', compact('albaniles'));
+        $tipoviviendas = Tipovivienda::all();
+        return view('tipoviviendas.index',compact('tipoviviendas'));
     }
 
     /**
@@ -30,8 +29,8 @@ class AlbanilController extends Controller
      */
     public function create()
     {
-        $albaniles = Albanil::all();
-        return view('albaniles.create', compact('albaniles'));
+        $tipoviviendas = Tipovivienda::all();
+        return view('tipoviviendas.create',compact('tipoviviendas'));
     }
 
     /**
@@ -42,8 +41,8 @@ class AlbanilController extends Controller
      */
     public function store(Request $request)
     {
-        Albanil::create($request->All());
-        return redirect('albaniles')->with('mensaje', 'Albañil registrado');
+        Tipovivienda::create($request->All());
+        return redirect('tipoviviendas')->with('mensaje','Tipo registrado');
     }
 
     /**
@@ -54,8 +53,8 @@ class AlbanilController extends Controller
      */
     public function show($id)
     {
-        $albanil = Albanil::findorFail($id);
-        return view('albaniles.show', compact('albanil'));
+        $tipovivienda = Tipovivienda::findorFail($id);
+        return view('tipoviviendas.show',compact('tipovivienda'));
     }
 
     /**
@@ -66,8 +65,8 @@ class AlbanilController extends Controller
      */
     public function edit($id)
     {
-        $albanil = Albanil::findorFail($id);
-        return view('albaniles.edit', compact('albanil'));
+        $tipovivienda = Tipovivienda::findorFail($id);
+        return view('tipoviviendas.edit',compact('tipovivienda'));
     }
 
     /**
@@ -79,10 +78,10 @@ class AlbanilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $albanil = Albanil::findorFail($id);
-        $albanil->fill($request->All());
-        $albanil->save();
-        return redirect('/albaniles')->with('mensaje', 'Información actualizada');
+        $tipovivienda = Tipovivienda::findorFail($id);
+        $tipovivienda->fill($request->All());
+        $tipovivienda->save();
+        return redirect('/tipoviviendas')->with('mensaje', 'Registro actualizado');
     }
 
     /**
@@ -94,29 +93,5 @@ class AlbanilController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function baja($cadena)
-    {
-        $datos = explode("+",$cadena);
-        $id = $datos[0];
-        $motivo = $datos[1];
-
-        $albanil = Albanil::find($id);
-        $albanil->estado = 2;
-        $albanil->motivo = $motivo;
-        $albanil->fechabaja = date('Y-m-d');
-        $albanil->save();
-        return redirect('/albaniles')->with('mensaje','Albañil dado de baja');
-    }
-
-    public function alta($id)
-    {
-        $albanil = Albanil::find($id);
-        $albanil->estado = 1;
-        $albanil->motivo = "";
-        $albanil->fechabaja = null;
-        $albanil->save();
-        return redirect('/albaniles')->with('mensaje','Albañil dado de alta');
     }
 }

@@ -13,8 +13,4 @@ class Material extends Model
     	return $this->hasMany('App\Presupuestodetalle');
     }
 
-    public function presupuesto()
-    {
-    	return $this->hasMany('App\Presupuesto');
-    }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tipovivienda;
 use App\Materialvivienda;
 use App\Presupuestovivienda;
+use App\Presuymat;
 
 class PresupuestoviviendaController extends Controller
 {
@@ -52,18 +53,14 @@ class PresupuestoviviendaController extends Controller
 
             $presupuestovivienda = Presupuestovivienda::create([
                 'tipovivienda_id' => $request->tipovivienda_id,
-                'fecha' => $request->fecha,
-                'materialvivienda_id' => $request->materialvivienda_id,
                 'total' => $request->total,
             ]);
 
             for($i = 0; $i<$count;$i++)
             {
-                Presupuestovivienda::create([
-                'nombre' => $request->materiales[$i],
-                'codigo' => $request->codigos[$i],
-                'unidad_medida' => $request->unidades[$i],
-                'precio_unitario' => $request->precios[$i],
+                Presuymat::create([
+                'presupuestovivienda_id' => $presupuestovivienda->id,
+                'materialvivienda_id' => $request->materiales[$i],
                 'cantidad' => $request->cantidades[$i],
                 ]);
             }

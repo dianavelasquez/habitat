@@ -17,6 +17,7 @@ class CreatePresuymatsTable extends Migration
             $table->increments('id');
             $table->integer('presupuestovivienda_id')->unsigned();
             $table->integer('materialvivienda_id')->unsigned();
+            $table->integer('cantidad')->unsigned();
             $table->foreign('presupuestovivienda_id')->references('id')->on('presupuestoviviendas');
             $table->foreign('materialvivienda_id')->references('id')->on('materialviviendas');
             $table->timestamps();

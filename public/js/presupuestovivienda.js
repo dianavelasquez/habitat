@@ -8,10 +8,9 @@ $(document).ready(function(){
 		materialviviendatexto = $("#materialvivienda option:selected").text() || 0,
 		cod = $("#materialvivienda option:selected").attr('data-codigo') || 0,
 		unidad = $("#materialvivienda option:selected").attr('data-unidad') || 0,
-		//alert(unidad);
 		precio = $("#materialvivienda option:selected").attr('data-precio') || 0;
-		cantidad = $("#materialvivienda option:selected").attr('data-cantidad') || 0;
-		if(materialvivienda)
+		cantidad = $("#cantidad").val() || 0;
+		if(materialvivienda && cantidad)
 		{
 			subtotal = parseFloat(cantidad)*parseFloat(precio);
 			contador++;
@@ -25,9 +24,6 @@ $(document).ready(function(){
 					"<td>" +subtotal+"</td>"+
 					"<td>" +
 					"<input type='hidden' name='materiales[]' value='"+materialvivienda+"'/>" +
-					"<input type='hidden' name='codigos[]' value='"+cod+"'/>" +
-					"<input type='hidden' name='unidades[]' value='"+unidad+"'/>" +
-					"<input type='hidden' name='precios[]' value='"+precio+"'/>" +
 					"<input type='hidden' name='cantidades[]' value='"+cantidad+"'/>" +
 					"<button type='button' class='btn btn-danger' id='eliminar'>Eliminar</button></td>" +
 					"</tr>"
@@ -44,7 +40,7 @@ $(document).ready(function(){
 					 '¡Aviso!',
 					 'Debe llenar todos los campos',
 					 'warning'
-)
+					 )
 			}
 		}
 
@@ -52,14 +48,18 @@ $(document).ready(function(){
 	});
 	$(document).on("click","#eliminar",function(e){
 		var tr= $(e.target).parents("tr");
+		totaltotal  = $("#totalEnd");
+        var totalFila=parseFloat($(this).parents('tr').find('td:eq(5)').text());
+        total = parseFloat(totaltotal.text()) - parseFloat(totalFila);
+        contador--;
+        $("#contador").val(contador);
+		$("#total").val(total);
+		$("#pie #totalEnd").text(onFixed(total));
 		tr.remove();
-		contador--;
-		$("#contador").val(contador);
-
 	});
 
 	function limpiar(){
-		$("#requisicion").find("#materialvivienda, #cantidad, #precio").each(function(index, element){
+		$("#presupuestovivienda").find("#materialvivienda, #cantidad").each(function(index, element){
 			$(element).val("");
 		});
 	}

@@ -26,6 +26,7 @@
           <thead>
                   <th>Id</th>
                   <th>Tipo de vivienda</th>
+                  <th>Total</th>
                   <th>Acción</th>
                 </thead>
 
@@ -34,6 +35,7 @@
                   <tr>
                     <td>{{ $presupuestovivienda->id }}</td>
                     <td>{{ $presupuestovivienda->tipovivienda->nombre }}</td>
+                    <td>{{number_format($presupuestovivienda->total,2)}}</td>
                     <td>
                                 {{ Form::open(['method' => 'POST', 'id' => 'baja', 'class' => 'form-horizontal'])}}
                                 <a href="{{ url('presupuestoviviendas/'.$presupuestovivienda->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>

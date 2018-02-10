@@ -31,3 +31,10 @@
         @endif
     </div>
 </div>
+
+<div class="form-group">
+    <label class="col-md-4">Cantidad</label>
+    <div class="col-md-6">
+        <input type="number" id="cantidad" step="1" min="1" class="form-control">
+    </div>
+</div>

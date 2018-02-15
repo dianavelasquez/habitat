@@ -16,7 +16,7 @@
 <div class="col-md-10 col-md-offset-1">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Listado</h3>
+              <h3 class="box-title">Listado de Materiales</h3>
                 <a href="{{ url('/materiales/create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
 
             </div>
